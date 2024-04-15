@@ -1,5 +1,7 @@
 #pragma once
-
+// QtChessGame.h: Header for the main chess game management.
+#ifndef QTCHESSGAME_H
+#define QTCHESSGAME_H
 #include <QtWidgets/QMainWindow>
 #include "ui_QtChessGame.h"
 
@@ -14,3 +16,4 @@ public:
 private:
     Ui::QtChessGameClass ui;
 };
+#endif // QTCHESSGAME_H

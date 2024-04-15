@@ -94,6 +94,7 @@
     <ClCompile Include="King.cpp" />
     <ClCompile Include="Knight.cpp" />
     <ClCompile Include="PlayingWindow.cpp" />
+    <ClCompile Include="Position.cpp" />
     <ClCompile Include="Queen.cpp" />
     <ClCompile Include="Rook.cpp" />
     <ClCompile Include="StartWindow.cpp" />
@@ -114,7 +115,8 @@
     <ClInclude Include="Knight.h" />
     <ClInclude Include="Pawn.h" />
     <ClInclude Include="Piece.h" />
-    <ClInclude Include="PlayingWindow.h" />
+    <ClInclude Include="Position.h" />
+    <QtMoc Include="PlayingWindow.h" />
     <ClInclude Include="Queen.h" />
     <ClInclude Include="Rook.h" />
     <ClInclude Include="StartWindow.h" />
