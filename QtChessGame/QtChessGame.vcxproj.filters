@@ -1,0 +1,263 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>qml;cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="Header Files">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hh;hpp;hxx;hm;inl;inc;xsd</Extensions>
+    </Filter>
+    <Filter Include="Resource Files">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>qrc;rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    </Filter>
+    <Filter Include="Form Files">
+      <UniqueIdentifier>{99349809-55BA-4b9d-BF79-8FDBB0286EB3}</UniqueIdentifier>
+      <Extensions>ui</Extensions>
+    </Filter>
+    <Filter Include="Translation Files">
+      <UniqueIdentifier>{639EADAA-A684-42e4-A9AD-28FC9BCB8F7C}</UniqueIdentifier>
+      <Extensions>ts</Extensions>
+    </Filter>
+    <Filter Include="Resource Files\images">
+      <UniqueIdentifier>{c800982e-abe4-416b-bd0a-22368296a9f5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Resource Files\images\StartWindow_images">
+      <UniqueIdentifier>{723f7c6b-1a33-4ed5-a2ed-9ff21381196e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Resource Files\images\PlayingWindow_images">
+      <UniqueIdentifier>{011fbf96-1751-4003-96d3-123e10fa327e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Resource Files\images\EndWindow_images">
+      <UniqueIdentifier>{57a7ba19-794c-454b-8661-233e99377ed0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Resource Files\sounds">
+      <UniqueIdentifier>{40efc6b5-7428-475b-bc26-b4da56a572ff}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Resource Files\images\PlayingWindow_images\board">
+      <UniqueIdentifier>{84df2fdc-156a-4647-8041-fac7998ef43f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Resource Files\images\PlayingWindow_images\black_pieces">
+      <UniqueIdentifier>{17b2104b-8647-4c1d-83a9-489475f7eed5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Resource Files\images\PlayingWindow_images\white_pieces">
+      <UniqueIdentifier>{8a29f9d3-c53b-45c8-b7d0-c2ae4853c937}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Resource Files\sounds\StartWindow_sounds">
+      <UniqueIdentifier>{8beffc08-9fda-4e9d-8027-957816e2004e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Resource Files\sounds\PlayingWindow_sounds">
+      <UniqueIdentifier>{3d0f7f35-b83f-47be-9b2f-84c3af07e7cf}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Resource Files\sounds\EndWindow_sounds">
+      <UniqueIdentifier>{61a2b1d2-25f4-4493-9732-50f0b65190a5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Resource Files\sounds\PlayingWindow_sounds\ChessBoard_sounds">
+      <UniqueIdentifier>{c3729605-7808-40d3-a233-b8729a818bf5}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <QtRcc Include="QtChessGame.qrc">
+      <Filter>Resource Files</Filter>
+    </QtRcc>
+    <QtUic Include="QtChessGame.ui">
+      <Filter>Form Files</Filter>
+    </QtUic>
+    <QtMoc Include="QtChessGame.h">
+      <Filter>Header Files</Filter>
+    </QtMoc>
+    <ClCompile Include="QtChessGame.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="main.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Piece.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="ChessBoard.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Pawn.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Rook.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Queen.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Knight.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Bishop.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="King.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="StartWindow.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="PlayingWindow.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="EndWindow.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Bishop.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="ChessBoard.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="EndWindow.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="King.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Knight.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Pawn.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Piece.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="PlayingWindow.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Queen.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Rook.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="StartWindow.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="..\..\..\..\Desktop\Portfolio\Python\Chess Project\python test\blank.png">
+      <Filter>Resource Files\images\PlayingWindow_images\board</Filter>
+    </Image>
+    <Image Include="..\..\..\..\Desktop\Portfolio\Python\Chess Project\python test\chessboard.png">
+      <Filter>Resource Files\images\PlayingWindow_images\board</Filter>
+    </Image>
+    <Image Include="..\..\..\..\Desktop\Portfolio\Python\Chess Project\python test\high.png">
+      <Filter>Resource Files\images\PlayingWindow_images\board</Filter>
+    </Image>
+    <Image Include="..\..\..\..\Desktop\Portfolio\Python\Chess Project\python test\legal.png">
+      <Filter>Resource Files\images\PlayingWindow_images\board</Filter>
+    </Image>
+    <Image Include="..\..\..\..\Desktop\Portfolio\Python\Chess Project\python test\low.png">
+      <Filter>Resource Files\images\PlayingWindow_images\board</Filter>
+    </Image>
+    <Image Include="..\..\..\..\Desktop\Portfolio\Python\Chess Project\python test\black\black-bishop.png">
+      <Filter>Resource Files\images\PlayingWindow_images\black_pieces</Filter>
+    </Image>
+    <Image Include="..\..\..\..\Desktop\Portfolio\Python\Chess Project\python test\black\black-king.png">
+      <Filter>Resource Files\images\PlayingWindow_images\black_pieces</Filter>
+    </Image>
+    <Image Include="..\..\..\..\Desktop\Portfolio\Python\Chess Project\python test\black\black-knight.png">
+      <Filter>Resource Files\images\PlayingWindow_images\black_pieces</Filter>
+    </Image>
+    <Image Include="..\..\..\..\Desktop\Portfolio\Python\Chess Project\python test\black\black-pawn.png">
+      <Filter>Resource Files\images\PlayingWindow_images\black_pieces</Filter>
+    </Image>
+    <Image Include="..\..\..\..\Desktop\Portfolio\Python\Chess Project\python test\black\black-queen.png">
+      <Filter>Resource Files\images\PlayingWindow_images\black_pieces</Filter>
+    </Image>
+    <Image Include="..\..\..\..\Desktop\Portfolio\Python\Chess Project\python test\black\black-rook.png">
+      <Filter>Resource Files\images\PlayingWindow_images\black_pieces</Filter>
+    </Image>
+    <Image Include="..\..\..\..\Desktop\Portfolio\Python\Chess Project\python test\white\white-bishop.png">
+      <Filter>Resource Files\images\PlayingWindow_images\white_pieces</Filter>
+    </Image>
+    <Image Include="..\..\..\..\Desktop\Portfolio\Python\Chess Project\python test\white\white-king.png">
+      <Filter>Resource Files\images\PlayingWindow_images\white_pieces</Filter>
+    </Image>
+    <Image Include="..\..\..\..\Desktop\Portfolio\Python\Chess Project\python test\white\white-knight.png">
+      <Filter>Resource Files\images\PlayingWindow_images\white_pieces</Filter>
+    </Image>
+    <Image Include="..\..\..\..\Desktop\Portfolio\Python\Chess Project\python test\white\white-pawn.png">
+      <Filter>Resource Files\images\PlayingWindow_images\white_pieces</Filter>
+    </Image>
+    <Image Include="..\..\..\..\Desktop\Portfolio\Python\Chess Project\python test\white\white-queen.png">
+      <Filter>Resource Files\images\PlayingWindow_images\white_pieces</Filter>
+    </Image>
+    <Image Include="..\..\..\..\Desktop\Portfolio\Python\Chess Project\python test\white\white-rook.png">
+      <Filter>Resource Files\images\PlayingWindow_images\white_pieces</Filter>
+    </Image>
+  </ItemGroup>
+  <ItemGroup>
+    <Media Include="sounds\PlayingWindow_sounds\BrightClick.mp3">
+      <Filter>Resource Files\sounds\PlayingWindow_sounds</Filter>
+    </Media>
+    <Media Include="sounds\PlayingWindow_sounds\FastClick.mp3">
+      <Filter>Resource Files\sounds\PlayingWindow_sounds</Filter>
+    </Media>
+    <Media Include="sounds\PlayingWindow_sounds\UiClick.mp3">
+      <Filter>Resource Files\sounds\PlayingWindow_sounds</Filter>
+    </Media>
+    <Media Include="sounds\EndWindow_sounds\EndBrightClick.mp3">
+      <Filter>Resource Files\sounds\EndWindow_sounds</Filter>
+    </Media>
+    <Media Include="sounds\EndWindow_sounds\EndFastClick.mp3">
+      <Filter>Resource Files\sounds\EndWindow_sounds</Filter>
+    </Media>
+    <Media Include="sounds\EndWindow_sounds\EndUiClick.mp3">
+      <Filter>Resource Files\sounds\EndWindow_sounds</Filter>
+    </Media>
+    <Media Include="sounds\EndWindow_sounds\GameOver.wav">
+      <Filter>Resource Files\sounds\EndWindow_sounds</Filter>
+    </Media>
+    <Media Include="sounds\PlayingWindow_sounds\Chess_sounds\capture.webm">
+      <Filter>Resource Files\sounds\PlayingWindow_sounds\ChessBoard_sounds</Filter>
+    </Media>
+    <Media Include="sounds\PlayingWindow_sounds\Chess_sounds\castle.webm">
+      <Filter>Resource Files\sounds\PlayingWindow_sounds\ChessBoard_sounds</Filter>
+    </Media>
+    <Media Include="sounds\PlayingWindow_sounds\Chess_sounds\game-end.webm">
+      <Filter>Resource Files\sounds\PlayingWindow_sounds\ChessBoard_sounds</Filter>
+    </Media>
+    <Media Include="sounds\PlayingWindow_sounds\Chess_sounds\game-start.webm">
+      <Filter>Resource Files\sounds\PlayingWindow_sounds\ChessBoard_sounds</Filter>
+    </Media>
+    <Media Include="sounds\PlayingWindow_sounds\Chess_sounds\illegal.webm">
+      <Filter>Resource Files\sounds\PlayingWindow_sounds\ChessBoard_sounds</Filter>
+    </Media>
+    <Media Include="sounds\PlayingWindow_sounds\Chess_sounds\move-check.webm">
+      <Filter>Resource Files\sounds\PlayingWindow_sounds\ChessBoard_sounds</Filter>
+    </Media>
+    <Media Include="sounds\PlayingWindow_sounds\Chess_sounds\move-self.webm">
+      <Filter>Resource Files\sounds\PlayingWindow_sounds\ChessBoard_sounds</Filter>
+    </Media>
+    <Media Include="sounds\PlayingWindow_sounds\Chess_sounds\premove.webm">
+      <Filter>Resource Files\sounds\PlayingWindow_sounds\ChessBoard_sounds</Filter>
+    </Media>
+    <Media Include="sounds\PlayingWindow_sounds\Chess_sounds\promote.webm">
+      <Filter>Resource Files\sounds\PlayingWindow_sounds\ChessBoard_sounds</Filter>
+    </Media>
+    <Media Include="sounds\PlayingWindow_sounds\Chess_sounds\tenseconds.webm">
+      <Filter>Resource Files\sounds\PlayingWindow_sounds\ChessBoard_sounds</Filter>
+    </Media>
+    <Media Include="sounds\StartWindow_sounds\StartBrightClick.mp3">
+      <Filter>Resource Files\sounds\StartWindow_sounds</Filter>
+    </Media>
+    <Media Include="sounds\StartWindow_sounds\StartFastClick.mp3">
+      <Filter>Resource Files\sounds\StartWindow_sounds</Filter>
+    </Media>
+    <Media Include="sounds\StartWindow_sounds\StartUiClick.mp3">
+      <Filter>Resource Files\sounds\StartWindow_sounds</Filter>
+    </Media>
+  </ItemGroup>
+</Project>

@@ -1,0 +1,169 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<!--
+***************************************************************************************************
+ Copyright (C) 2023 The Qt Company Ltd.
+ SPDX-License-Identifier: LicenseRef-Qt-Commercial OR LGPL-3.0-only OR GPL-2.0-only OR GPL-3.0-only
+***************************************************************************************************
+-->
+<Project DefaultTargets="Build" ToolsVersion="17.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|x64">
+      <Configuration>Debug</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|x64">
+      <Configuration>Release</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{E9BC6327-7944-4897-B331-0C524052D340}</ProjectGuid>
+    <Keyword>QtVS_v304</Keyword>
+    <WindowsTargetPlatformVersion Condition="'$(Configuration)|$(Platform)' == 'Debug|x64'">10.0.22621.0</WindowsTargetPlatformVersion>
+    <WindowsTargetPlatformVersion Condition="'$(Configuration)|$(Platform)' == 'Release|x64'">10.0.22621.0</WindowsTargetPlatformVersion>
+    <QtMsBuild Condition="'$(QtMsBuild)'=='' OR !Exists('$(QtMsBuild)\qt.targets')">$(MSBuildProjectDirectory)\QtMsBuild</QtMsBuild>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x64'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <PlatformToolset>v143</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x64'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <PlatformToolset>v143</PlatformToolset>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Condition="Exists('$(QtMsBuild)\qt_defaults.props')">
+    <Import Project="$(QtMsBuild)\qt_defaults.props" />
+  </ImportGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x64'" Label="QtSettings">
+    <QtInstall>6.7.0_msvc2019_64</QtInstall>
+    <QtModules>core;gui;widgets</QtModules>
+    <QtBuildConfig>debug</QtBuildConfig>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x64'" Label="QtSettings">
+    <QtInstall>6.7.0_msvc2019_64</QtInstall>
+    <QtModules>core;gui;widgets</QtModules>
+    <QtBuildConfig>release</QtBuildConfig>
+  </PropertyGroup>
+  <Target Name="QtMsBuildNotFound" BeforeTargets="CustomBuild;ClCompile" Condition="!Exists('$(QtMsBuild)\qt.targets') or !Exists('$(QtMsBuild)\qt.props')">
+    <Message Importance="High" Text="QtMsBuild: could not locate qt.targets, qt.props; project may not build correctly." />
+  </Target>
+  <ImportGroup Label="ExtensionSettings" />
+  <ImportGroup Label="Shared" />
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)' == 'Debug|x64'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+    <Import Project="$(QtMsBuild)\Qt.props" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)' == 'Release|x64'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+    <Import Project="$(QtMsBuild)\Qt.props" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x64'">
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x64'">
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x64'" Label="Configuration">
+    <ClCompile>
+      <TreatWChar_tAsBuiltInType>true</TreatWChar_tAsBuiltInType>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+      <Optimization>Disabled</Optimization>
+    </ClCompile>
+    <Link>
+      <SubSystem>Windows</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x64'" Label="Configuration">
+    <ClCompile>
+      <TreatWChar_tAsBuiltInType>true</TreatWChar_tAsBuiltInType>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+      <DebugInformationFormat>None</DebugInformationFormat>
+      <Optimization>MaxSpeed</Optimization>
+    </ClCompile>
+    <Link>
+      <SubSystem>Windows</SubSystem>
+      <GenerateDebugInformation>false</GenerateDebugInformation>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <ClCompile Include="Bishop.cpp" />
+    <ClCompile Include="EndWindow.cpp" />
+    <ClCompile Include="King.cpp" />
+    <ClCompile Include="Knight.cpp" />
+    <ClCompile Include="PlayingWindow.cpp" />
+    <ClCompile Include="Queen.cpp" />
+    <ClCompile Include="Rook.cpp" />
+    <ClCompile Include="StartWindow.cpp" />
+    <QtRcc Include="QtChessGame.qrc" />
+    <QtUic Include="QtChessGame.ui" />
+    <QtMoc Include="QtChessGame.h" />
+    <ClCompile Include="ChessBoard.cpp" />
+    <ClCompile Include="Pawn.cpp" />
+    <ClCompile Include="Piece.cpp" />
+    <ClCompile Include="QtChessGame.cpp" />
+    <ClCompile Include="main.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Bishop.h" />
+    <ClInclude Include="ChessBoard.h" />
+    <ClInclude Include="EndWindow.h" />
+    <ClInclude Include="King.h" />
+    <ClInclude Include="Knight.h" />
+    <ClInclude Include="Pawn.h" />
+    <ClInclude Include="Piece.h" />
+    <ClInclude Include="PlayingWindow.h" />
+    <ClInclude Include="Queen.h" />
+    <ClInclude Include="Rook.h" />
+    <ClInclude Include="StartWindow.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="..\..\..\..\Desktop\Portfolio\Python\Chess Project\python test\black\black-bishop.png" />
+    <Image Include="..\..\..\..\Desktop\Portfolio\Python\Chess Project\python test\black\black-king.png" />
+    <Image Include="..\..\..\..\Desktop\Portfolio\Python\Chess Project\python test\black\black-knight.png" />
+    <Image Include="..\..\..\..\Desktop\Portfolio\Python\Chess Project\python test\black\black-pawn.png" />
+    <Image Include="..\..\..\..\Desktop\Portfolio\Python\Chess Project\python test\black\black-queen.png" />
+    <Image Include="..\..\..\..\Desktop\Portfolio\Python\Chess Project\python test\black\black-rook.png" />
+    <Image Include="..\..\..\..\Desktop\Portfolio\Python\Chess Project\python test\blank.png" />
+    <Image Include="..\..\..\..\Desktop\Portfolio\Python\Chess Project\python test\chessboard.png" />
+    <Image Include="..\..\..\..\Desktop\Portfolio\Python\Chess Project\python test\high.png" />
+    <Image Include="..\..\..\..\Desktop\Portfolio\Python\Chess Project\python test\legal.png" />
+    <Image Include="..\..\..\..\Desktop\Portfolio\Python\Chess Project\python test\low.png" />
+    <Image Include="..\..\..\..\Desktop\Portfolio\Python\Chess Project\python test\white\white-bishop.png" />
+    <Image Include="..\..\..\..\Desktop\Portfolio\Python\Chess Project\python test\white\white-king.png" />
+    <Image Include="..\..\..\..\Desktop\Portfolio\Python\Chess Project\python test\white\white-knight.png" />
+    <Image Include="..\..\..\..\Desktop\Portfolio\Python\Chess Project\python test\white\white-pawn.png" />
+    <Image Include="..\..\..\..\Desktop\Portfolio\Python\Chess Project\python test\white\white-queen.png" />
+    <Image Include="..\..\..\..\Desktop\Portfolio\Python\Chess Project\python test\white\white-rook.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Media Include="sounds\EndWindow_sounds\EndBrightClick.mp3" />
+    <Media Include="sounds\EndWindow_sounds\EndFastClick.mp3" />
+    <Media Include="sounds\EndWindow_sounds\EndUiClick.mp3" />
+    <Media Include="sounds\EndWindow_sounds\GameOver.wav" />
+    <Media Include="sounds\PlayingWindow_sounds\BrightClick.mp3" />
+    <Media Include="sounds\PlayingWindow_sounds\Chess_sounds\capture.webm" />
+    <Media Include="sounds\PlayingWindow_sounds\Chess_sounds\castle.webm" />
+    <Media Include="sounds\PlayingWindow_sounds\Chess_sounds\game-end.webm" />
+    <Media Include="sounds\PlayingWindow_sounds\Chess_sounds\game-start.webm" />
+    <Media Include="sounds\PlayingWindow_sounds\Chess_sounds\illegal.webm" />
+    <Media Include="sounds\PlayingWindow_sounds\Chess_sounds\move-check.webm" />
+    <Media Include="sounds\PlayingWindow_sounds\Chess_sounds\move-self.webm" />
+    <Media Include="sounds\PlayingWindow_sounds\Chess_sounds\premove.webm" />
+    <Media Include="sounds\PlayingWindow_sounds\Chess_sounds\promote.webm" />
+    <Media Include="sounds\PlayingWindow_sounds\Chess_sounds\tenseconds.webm" />
+    <Media Include="sounds\PlayingWindow_sounds\FastClick.mp3" />
+    <Media Include="sounds\PlayingWindow_sounds\UiClick.mp3" />
+    <Media Include="sounds\StartWindow_sounds\StartBrightClick.mp3" />
+    <Media Include="sounds\StartWindow_sounds\StartFastClick.mp3" />
+    <Media Include="sounds\StartWindow_sounds\StartUiClick.mp3" />
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Condition="Exists('$(QtMsBuild)\qt.targets')">
+    <Import Project="$(QtMsBuild)\qt.targets" />
+  </ImportGroup>
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>
