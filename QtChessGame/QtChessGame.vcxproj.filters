@@ -36,12 +36,6 @@
     <Filter Include="Resource Files\sounds">
       <UniqueIdentifier>{40efc6b5-7428-475b-bc26-b4da56a572ff}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Resource Files\images\PlayingWindow_images\board">
-      <UniqueIdentifier>{84df2fdc-156a-4647-8041-fac7998ef43f}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Resource Files\images\PlayingWindow_images\black_pieces">
-      <UniqueIdentifier>{17b2104b-8647-4c1d-83a9-489475f7eed5}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Resource Files\images\PlayingWindow_images\white_pieces">
       <UniqueIdentifier>{8a29f9d3-c53b-45c8-b7d0-c2ae4853c937}</UniqueIdentifier>
     </Filter>
@@ -56,6 +50,12 @@
     </Filter>
     <Filter Include="Resource Files\sounds\PlayingWindow_sounds\ChessBoard_sounds">
       <UniqueIdentifier>{c3729605-7808-40d3-a233-b8729a818bf5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Resource Files\images\PlayingWindow_images\black_pieces">
+      <UniqueIdentifier>{93806e8c-175a-4672-a39a-5ac2333a91cb}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Resource Files\images\PlayingWindow_images\ChessBoards">
+      <UniqueIdentifier>{22fbe42c-fa30-472f-bb16-14f4539b22b1}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -146,59 +146,6 @@
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <Image Include="..\..\..\..\Desktop\Portfolio\Python\Chess Project\python test\blank.png">
-      <Filter>Resource Files\images\PlayingWindow_images\board</Filter>
-    </Image>
-    <Image Include="..\..\..\..\Desktop\Portfolio\Python\Chess Project\python test\chessboard.png">
-      <Filter>Resource Files\images\PlayingWindow_images\board</Filter>
-    </Image>
-    <Image Include="..\..\..\..\Desktop\Portfolio\Python\Chess Project\python test\high.png">
-      <Filter>Resource Files\images\PlayingWindow_images\board</Filter>
-    </Image>
-    <Image Include="..\..\..\..\Desktop\Portfolio\Python\Chess Project\python test\legal.png">
-      <Filter>Resource Files\images\PlayingWindow_images\board</Filter>
-    </Image>
-    <Image Include="..\..\..\..\Desktop\Portfolio\Python\Chess Project\python test\low.png">
-      <Filter>Resource Files\images\PlayingWindow_images\board</Filter>
-    </Image>
-    <Image Include="..\..\..\..\Desktop\Portfolio\Python\Chess Project\python test\black\black-bishop.png">
-      <Filter>Resource Files\images\PlayingWindow_images\black_pieces</Filter>
-    </Image>
-    <Image Include="..\..\..\..\Desktop\Portfolio\Python\Chess Project\python test\black\black-king.png">
-      <Filter>Resource Files\images\PlayingWindow_images\black_pieces</Filter>
-    </Image>
-    <Image Include="..\..\..\..\Desktop\Portfolio\Python\Chess Project\python test\black\black-knight.png">
-      <Filter>Resource Files\images\PlayingWindow_images\black_pieces</Filter>
-    </Image>
-    <Image Include="..\..\..\..\Desktop\Portfolio\Python\Chess Project\python test\black\black-pawn.png">
-      <Filter>Resource Files\images\PlayingWindow_images\black_pieces</Filter>
-    </Image>
-    <Image Include="..\..\..\..\Desktop\Portfolio\Python\Chess Project\python test\black\black-queen.png">
-      <Filter>Resource Files\images\PlayingWindow_images\black_pieces</Filter>
-    </Image>
-    <Image Include="..\..\..\..\Desktop\Portfolio\Python\Chess Project\python test\black\black-rook.png">
-      <Filter>Resource Files\images\PlayingWindow_images\black_pieces</Filter>
-    </Image>
-    <Image Include="..\..\..\..\Desktop\Portfolio\Python\Chess Project\python test\white\white-bishop.png">
-      <Filter>Resource Files\images\PlayingWindow_images\white_pieces</Filter>
-    </Image>
-    <Image Include="..\..\..\..\Desktop\Portfolio\Python\Chess Project\python test\white\white-king.png">
-      <Filter>Resource Files\images\PlayingWindow_images\white_pieces</Filter>
-    </Image>
-    <Image Include="..\..\..\..\Desktop\Portfolio\Python\Chess Project\python test\white\white-knight.png">
-      <Filter>Resource Files\images\PlayingWindow_images\white_pieces</Filter>
-    </Image>
-    <Image Include="..\..\..\..\Desktop\Portfolio\Python\Chess Project\python test\white\white-pawn.png">
-      <Filter>Resource Files\images\PlayingWindow_images\white_pieces</Filter>
-    </Image>
-    <Image Include="..\..\..\..\Desktop\Portfolio\Python\Chess Project\python test\white\white-queen.png">
-      <Filter>Resource Files\images\PlayingWindow_images\white_pieces</Filter>
-    </Image>
-    <Image Include="..\..\..\..\Desktop\Portfolio\Python\Chess Project\python test\white\white-rook.png">
-      <Filter>Resource Files\images\PlayingWindow_images\white_pieces</Filter>
-    </Image>
-  </ItemGroup>
-  <ItemGroup>
     <Media Include="sounds\PlayingWindow_sounds\BrightClick.mp3">
       <Filter>Resource Files\sounds\PlayingWindow_sounds</Filter>
     </Media>
@@ -259,5 +206,73 @@
     <Media Include="sounds\StartWindow_sounds\StartUiClick.mp3">
       <Filter>Resource Files\sounds\StartWindow_sounds</Filter>
     </Media>
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="images\PlayingWindow_images\black_pieces\black-bishop.png">
+      <Filter>Resource Files\images\PlayingWindow_images\black_pieces</Filter>
+    </Image>
+    <Image Include="images\PlayingWindow_images\black_pieces\black-king.png">
+      <Filter>Resource Files\images\PlayingWindow_images\black_pieces</Filter>
+    </Image>
+    <Image Include="images\PlayingWindow_images\black_pieces\black-knight.png">
+      <Filter>Resource Files\images\PlayingWindow_images\black_pieces</Filter>
+    </Image>
+    <Image Include="images\PlayingWindow_images\black_pieces\black-pawn.png">
+      <Filter>Resource Files\images\PlayingWindow_images\black_pieces</Filter>
+    </Image>
+    <Image Include="images\PlayingWindow_images\black_pieces\black-queen.png">
+      <Filter>Resource Files\images\PlayingWindow_images\black_pieces</Filter>
+    </Image>
+    <Image Include="images\PlayingWindow_images\black_pieces\black-rook.png">
+      <Filter>Resource Files\images\PlayingWindow_images\black_pieces</Filter>
+    </Image>
+    <Image Include="images\PlayingWindow_images\ChessBoards\blank.png">
+      <Filter>Resource Files\images\PlayingWindow_images\ChessBoards</Filter>
+    </Image>
+    <Image Include="images\PlayingWindow_images\ChessBoards\chessboard1.png">
+      <Filter>Resource Files\images\PlayingWindow_images\ChessBoards</Filter>
+    </Image>
+    <Image Include="images\PlayingWindow_images\ChessBoards\chessboard2.png">
+      <Filter>Resource Files\images\PlayingWindow_images\ChessBoards</Filter>
+    </Image>
+    <Image Include="images\PlayingWindow_images\ChessBoards\chessboard3.png">
+      <Filter>Resource Files\images\PlayingWindow_images\ChessBoards</Filter>
+    </Image>
+    <Image Include="images\PlayingWindow_images\ChessBoards\high.png">
+      <Filter>Resource Files\images\PlayingWindow_images\ChessBoards</Filter>
+    </Image>
+    <Image Include="images\PlayingWindow_images\ChessBoards\illegal.png">
+      <Filter>Resource Files\images\PlayingWindow_images\ChessBoards</Filter>
+    </Image>
+    <Image Include="images\PlayingWindow_images\ChessBoards\legal.png">
+      <Filter>Resource Files\images\PlayingWindow_images\ChessBoards</Filter>
+    </Image>
+    <Image Include="images\PlayingWindow_images\ChessBoards\low.png">
+      <Filter>Resource Files\images\PlayingWindow_images\ChessBoards</Filter>
+    </Image>
+    <Image Include="images\PlayingWindow_images\white_pieces\white-bishop.png">
+      <Filter>Resource Files\images\PlayingWindow_images\white_pieces</Filter>
+    </Image>
+    <Image Include="images\PlayingWindow_images\white_pieces\white-king.png">
+      <Filter>Resource Files\images\PlayingWindow_images\white_pieces</Filter>
+    </Image>
+    <Image Include="images\PlayingWindow_images\white_pieces\white-knight.png">
+      <Filter>Resource Files\images\PlayingWindow_images\white_pieces</Filter>
+    </Image>
+    <Image Include="images\PlayingWindow_images\white_pieces\white-pawn.png">
+      <Filter>Resource Files\images\PlayingWindow_images\white_pieces</Filter>
+    </Image>
+    <Image Include="images\PlayingWindow_images\white_pieces\white-queen.png">
+      <Filter>Resource Files\images\PlayingWindow_images\white_pieces</Filter>
+    </Image>
+    <Image Include="images\PlayingWindow_images\white_pieces\white-rook.png">
+      <Filter>Resource Files\images\PlayingWindow_images\white_pieces</Filter>
+    </Image>
+    <Image Include="images\StartWindow_images\ChessLogoFinal.png">
+      <Filter>Resource Files\images\StartWindow_images</Filter>
+    </Image>
+    <Image Include="images\EndWindow_images\ChessLogoFinal.png">
+      <Filter>Resource Files\images\EndWindow_images</Filter>
+    </Image>
   </ItemGroup>
 </Project>

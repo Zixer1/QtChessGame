@@ -120,25 +120,6 @@
     <ClInclude Include="StartWindow.h" />
   </ItemGroup>
   <ItemGroup>
-    <Image Include="..\..\..\..\Desktop\Portfolio\Python\Chess Project\python test\black\black-bishop.png" />
-    <Image Include="..\..\..\..\Desktop\Portfolio\Python\Chess Project\python test\black\black-king.png" />
-    <Image Include="..\..\..\..\Desktop\Portfolio\Python\Chess Project\python test\black\black-knight.png" />
-    <Image Include="..\..\..\..\Desktop\Portfolio\Python\Chess Project\python test\black\black-pawn.png" />
-    <Image Include="..\..\..\..\Desktop\Portfolio\Python\Chess Project\python test\black\black-queen.png" />
-    <Image Include="..\..\..\..\Desktop\Portfolio\Python\Chess Project\python test\black\black-rook.png" />
-    <Image Include="..\..\..\..\Desktop\Portfolio\Python\Chess Project\python test\blank.png" />
-    <Image Include="..\..\..\..\Desktop\Portfolio\Python\Chess Project\python test\chessboard.png" />
-    <Image Include="..\..\..\..\Desktop\Portfolio\Python\Chess Project\python test\high.png" />
-    <Image Include="..\..\..\..\Desktop\Portfolio\Python\Chess Project\python test\legal.png" />
-    <Image Include="..\..\..\..\Desktop\Portfolio\Python\Chess Project\python test\low.png" />
-    <Image Include="..\..\..\..\Desktop\Portfolio\Python\Chess Project\python test\white\white-bishop.png" />
-    <Image Include="..\..\..\..\Desktop\Portfolio\Python\Chess Project\python test\white\white-king.png" />
-    <Image Include="..\..\..\..\Desktop\Portfolio\Python\Chess Project\python test\white\white-knight.png" />
-    <Image Include="..\..\..\..\Desktop\Portfolio\Python\Chess Project\python test\white\white-pawn.png" />
-    <Image Include="..\..\..\..\Desktop\Portfolio\Python\Chess Project\python test\white\white-queen.png" />
-    <Image Include="..\..\..\..\Desktop\Portfolio\Python\Chess Project\python test\white\white-rook.png" />
-  </ItemGroup>
-  <ItemGroup>
     <Media Include="sounds\EndWindow_sounds\EndBrightClick.mp3" />
     <Media Include="sounds\EndWindow_sounds\EndFastClick.mp3" />
     <Media Include="sounds\EndWindow_sounds\EndUiClick.mp3" />
@@ -159,6 +140,30 @@
     <Media Include="sounds\StartWindow_sounds\StartBrightClick.mp3" />
     <Media Include="sounds\StartWindow_sounds\StartFastClick.mp3" />
     <Media Include="sounds\StartWindow_sounds\StartUiClick.mp3" />
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="images\EndWindow_images\ChessLogoFinal.png" />
+    <Image Include="images\PlayingWindow_images\black_pieces\black-bishop.png" />
+    <Image Include="images\PlayingWindow_images\black_pieces\black-king.png" />
+    <Image Include="images\PlayingWindow_images\black_pieces\black-knight.png" />
+    <Image Include="images\PlayingWindow_images\black_pieces\black-pawn.png" />
+    <Image Include="images\PlayingWindow_images\black_pieces\black-queen.png" />
+    <Image Include="images\PlayingWindow_images\black_pieces\black-rook.png" />
+    <Image Include="images\PlayingWindow_images\ChessBoards\blank.png" />
+    <Image Include="images\PlayingWindow_images\ChessBoards\chessboard1.png" />
+    <Image Include="images\PlayingWindow_images\ChessBoards\chessboard2.png" />
+    <Image Include="images\PlayingWindow_images\ChessBoards\chessboard3.png" />
+    <Image Include="images\PlayingWindow_images\ChessBoards\high.png" />
+    <Image Include="images\PlayingWindow_images\ChessBoards\illegal.png" />
+    <Image Include="images\PlayingWindow_images\ChessBoards\legal.png" />
+    <Image Include="images\PlayingWindow_images\ChessBoards\low.png" />
+    <Image Include="images\PlayingWindow_images\white_pieces\white-bishop.png" />
+    <Image Include="images\PlayingWindow_images\white_pieces\white-king.png" />
+    <Image Include="images\PlayingWindow_images\white_pieces\white-knight.png" />
+    <Image Include="images\PlayingWindow_images\white_pieces\white-pawn.png" />
+    <Image Include="images\PlayingWindow_images\white_pieces\white-queen.png" />
+    <Image Include="images\PlayingWindow_images\white_pieces\white-rook.png" />
+    <Image Include="images\StartWindow_images\ChessLogoFinal.png" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Condition="Exists('$(QtMsBuild)\qt.targets')">
