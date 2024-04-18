@@ -17,6 +17,9 @@ public:
     bool operator!=(const Position& other) const;
     bool operator<(const Position& other) const;
 
+    //Methods
+    char getX() const;
+    int getY() const;
 
 };
 

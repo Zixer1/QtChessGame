@@ -4,12 +4,15 @@
 #define PLAYINGWINDOW_H
 
 #include <QWidget>
+#include <QGraphicsView>
+#include <QGraphicsScene>
 
-class PlayingWindow : public QWidget {
-    Q_OBJECT
+class PlayingWindow : public QGraphicsView {
 public:
-    PlayingWindow();
-    // UI interaction methods
+    PlayingWindow(QWidget* parent = 0);
+
+    QGraphicsScene* scene;
+
 };
 
 #endif // PLAYINGWINDOW_H

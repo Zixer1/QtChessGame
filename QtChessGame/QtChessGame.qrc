@@ -1,4 +1,6 @@
 <RCC>
-    <qresource prefix="QtChessGame">
+    <qresource prefix="/QtChessGame">
+        <file>images</file>
+        <file>sounds</file>
     </qresource>
 </RCC>

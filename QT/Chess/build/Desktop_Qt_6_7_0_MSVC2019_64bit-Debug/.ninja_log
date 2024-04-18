@@ -1,0 +1,9 @@
+# ninja log v5
+14	362	7351752782295567	Chess_autogen/timestamp	e629bfebae8b042a
+14	362	7351752782295567	Chess_autogen/mocs_compilation.cpp	e629bfebae8b042a
+14	362	7351752782295567	C:/Users/Alex/source/repos/QtChessGame/QT/Chess/build/Desktop_Qt_6_7_0_MSVC2019_64bit-Debug/Chess_autogen/timestamp	e629bfebae8b042a
+14	362	7351752782295567	C:/Users/Alex/source/repos/QtChessGame/QT/Chess/build/Desktop_Qt_6_7_0_MSVC2019_64bit-Debug/Chess_autogen/mocs_compilation.cpp	e629bfebae8b042a
+363	1681	7351752795935967	CMakeFiles/Chess.dir/Chess_autogen/mocs_compilation.cpp.obj	eb1a6c4d09c26196
+370	1689	7351752796036051	CMakeFiles/Chess.dir/main.cpp.obj	bff7bb0651c6b110
+375	1697	7351752796116128	CMakeFiles/Chess.dir/mainwindow.cpp.obj	305ebdc8cc8b0d02
+1698	2021	7351752799139668	Chess.exe	c7bea77b47cf7830

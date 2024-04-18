@@ -57,6 +57,9 @@
     <Filter Include="Resource Files\images\PlayingWindow_images\ChessBoards">
       <UniqueIdentifier>{22fbe42c-fa30-472f-bb16-14f4539b22b1}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Resource Files\sounds\PlayingWindow_sounds\NewFilter1">
+      <UniqueIdentifier>{a58d3a6a-c477-4fab-a029-916b43d0b82c}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <QtRcc Include="QtChessGame.qrc">
@@ -112,6 +115,9 @@
     <ClCompile Include="Position.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="square.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Bishop.h">
@@ -145,6 +151,15 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Position.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="PlayingWindow.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="square.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="PieceType.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
@@ -232,9 +247,6 @@
     <Image Include="images\PlayingWindow_images\ChessBoards\blank.png">
       <Filter>Resource Files\images\PlayingWindow_images\ChessBoards</Filter>
     </Image>
-    <Image Include="images\PlayingWindow_images\ChessBoards\chessboard1.png">
-      <Filter>Resource Files\images\PlayingWindow_images\ChessBoards</Filter>
-    </Image>
     <Image Include="images\PlayingWindow_images\ChessBoards\chessboard2.png">
       <Filter>Resource Files\images\PlayingWindow_images\ChessBoards</Filter>
     </Image>
@@ -277,10 +289,11 @@
     <Image Include="images\EndWindow_images\ChessLogoFinal.png">
       <Filter>Resource Files\images\EndWindow_images</Filter>
     </Image>
-  </ItemGroup>
-  <ItemGroup>
-    <QtMoc Include="PlayingWindow.h">
-      <Filter>Header Files</Filter>
-    </QtMoc>
+    <Image Include="images\PlayingWindow_images\ChessBoards\chessboard1.png">
+      <Filter>Resource Files\images\PlayingWindow_images\ChessBoards</Filter>
+    </Image>
+    <Image Include="images\PlayingWindow_images\ChessLogoFinal.png">
+      <Filter>Resource Files\images\PlayingWindow_images</Filter>
+    </Image>
   </ItemGroup>
 </Project>

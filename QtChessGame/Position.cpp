@@ -23,3 +23,11 @@ bool Position::operator<(const Position& other) const {
 }
 
 // Additional functionality implementation as needed.
+
+char Position::getX() const {
+    return x;
+}
+
+int Position::getY() const {
+    return y;
+}
