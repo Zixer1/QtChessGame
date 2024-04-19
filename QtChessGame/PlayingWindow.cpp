@@ -47,8 +47,6 @@ PlayingWindow::PlayingWindow(QWidget* parent) {
     }
     else {
 
-        
-
         chessLogo = chessLogo.scaled(chessLogoSize, chessLogoSize, Qt::KeepAspectRatio);
 
         QGraphicsPixmapItem* chessLogoItem = new QGraphicsPixmapItem(QPixmap::fromImage(chessLogo));

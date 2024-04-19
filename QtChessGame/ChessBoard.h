@@ -4,11 +4,13 @@
 #define CHESSBOARD_H
 
 #include "Piece.h"
+#include <QGraphicsView>
 
-class ChessBoard {
+class ChessBoard : public QGraphicsView {
 public:
-    ChessBoard();
-    // Methods for board state management
+    ChessBoard(int size, QWidget* parent = nullptr);
 };
 
-#endif // CHESSBOARD_H
+#endif /* CHESSBOARD_H */
+
+

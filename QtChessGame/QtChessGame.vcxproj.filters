@@ -156,9 +156,6 @@
     <ClInclude Include="PlayingWindow.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="square.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="PieceType.h">
       <Filter>Header Files</Filter>
     </ClInclude>
@@ -295,5 +292,10 @@
     <Image Include="images\PlayingWindow_images\ChessLogoFinal.png">
       <Filter>Resource Files\images\PlayingWindow_images</Filter>
     </Image>
+  </ItemGroup>
+  <ItemGroup>
+    <QtMoc Include="square.h">
+      <Filter>Header Files</Filter>
+    </QtMoc>
   </ItemGroup>
 </Project>

@@ -1,23 +1,22 @@
 #include "Square.h"
+#include "ChessBoard.h" // Include the header file for ChessBoard
 
-// Constructor with default values
-Square::Square() : position(Position()), pieceType(PieceType::Null) {}
+Square::Square(ChessBoard* parentBoard, QWidget* parent)
+    : QPushButton(parent), position(Position()), pieceType(PieceType::Null), parentBoard(parentBoard) {}
 
-// Constructor with specified position and piece type
-Square::Square(Position pos, PieceType type) : position(pos), pieceType(type) {}
+Square::Square(Position pos, PieceType type, ChessBoard* parentBoard, QWidget* parent)
+    : QPushButton(parent), position(pos), pieceType(type), parentBoard(parentBoard) {}
 
-// Method to get the position of the square
+
 Position Square::getPosition() const {
     return position;
 }
 
-// Method to set the piece type of the square
 void Square::setPieceType(PieceType type) {
     pieceType = type;
 }
 
-// Method to get the piece type of the square
 PieceType Square::getPieceType() const {
     return pieceType;
 }
-
+ 

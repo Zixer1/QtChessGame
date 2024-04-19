@@ -1,37 +1,38 @@
 #ifndef SQUARE_H
 #define SQUARE_H
 
+#include <QPushButton>
 #include "Position.h"
 #include "PieceType.h"
 
-class Square {
+class ChessBoard; // Forward declaration
+
+class Square : public QPushButton {
+    Q_OBJECT
+
 private:
-    Position position;  // Position of the square
-    PieceType pieceType; // Type of piece inside the square
+    Position position;
+    PieceType pieceType;
+    ChessBoard* parentBoard; // Pointer to the parent ChessBoard
 
 public:
-    // Constructor with default values
-    Square() : position(Position('x', 0)), pieceType(PieceType::Null) {}
+    Square(ChessBoard* parentBoard = nullptr, QWidget* parent = nullptr);
 
-    // Constructor with specified position and piece type
-    Square(Position pos, PieceType type) : position(pos), pieceType(type) {}
+    Square(Position pos, PieceType type, ChessBoard* parentBoard = nullptr, QWidget* parent = nullptr);
 
 
-    // Method to get the position of the square
-    Position getPosition() const {
-        return position;
-    }
+    Position getPosition() const;
 
-    // Method to set the piece type of the square
-    void setPieceType(PieceType type) {
-        pieceType = type;
-    }
+    void setPieceType(PieceType type);
 
-    // Method to get the piece type of the square
-    PieceType getPieceType() const {
-        return pieceType;
-    }
+    PieceType getPieceType() const;
 
+
+signals:
+    // Add signals here if needed
+
+public slots:
+    // Add slots here if needed
 };
 
 #endif /* SQUARE_H */

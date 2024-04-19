@@ -122,7 +122,7 @@
     <ClInclude Include="PlayingWindow.h" />
     <ClInclude Include="Queen.h" />
     <ClInclude Include="Rook.h" />
-    <ClInclude Include="square.h" />
+    <QtMoc Include="square.h" />
     <ClInclude Include="StartWindow.h" />
   </ItemGroup>
   <ItemGroup>
