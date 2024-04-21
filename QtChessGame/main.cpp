@@ -13,16 +13,21 @@ Date   15 April 2024
 #include <QApplication>
 #include <QPixmap> // Include QPixmap header for handling images
 #include "PlayingWindow.h"
-
+#include "Scene.h"
 PlayingWindow* playingWindow;
 
 int main(int argc, char *argv[])
 {
     QApplication a(argc, argv);
 
-    playingWindow = new PlayingWindow();
-    playingWindow->show();
+    // Since Scene is in the gui namespace, make sure to use it
+    gui::Scene* mainScene;
 
+    // Assuming you want to start with the main menu scene, for example
+    mainScene = new gui::Scene(3); // 0 could represent the main menu
+
+	
+    mainScene->show();
 
     return a.exec();
 }
