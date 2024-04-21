@@ -118,14 +118,17 @@
     <ClCompile Include="Position.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="square.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Test.cpp">
+    <ClCompile Include="Square.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="position_tester.cpp">
       <Filter>Source Files\tester_functions</Filter>
+    </ClCompile>
+    <ClCompile Include="Scene.h">
+      <Filter>Header Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Scene.cpp">
+      <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -156,9 +159,6 @@
     <ClInclude Include="StartWindow.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Position.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="PlayingWindow.h">
       <Filter>Header Files</Filter>
     </ClInclude>
@@ -166,6 +166,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Piece.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Position.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
@@ -303,7 +306,7 @@
     </Image>
   </ItemGroup>
   <ItemGroup>
-    <QtMoc Include="square.h">
+    <QtMoc Include="Square.h">
       <Filter>Header Files</Filter>
     </QtMoc>
   </ItemGroup>

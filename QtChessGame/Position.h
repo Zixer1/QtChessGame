@@ -4,8 +4,15 @@
 
 #include <stdexcept>
 #include <array>
+#include <QMainWindow>
+
+
+
+namespace data_model {
+	class Position;
 
 class Position {
+
 private:
 	int x;
 	int y;
@@ -34,6 +41,8 @@ public:
 
     // For checking if the a new position is beyond the limits of the board
     bool isBeyondLimits(int add_X, int add_y);
-};
 
+    void movePosition(int x, int y);
+};
+}
 #endif // POSITION_H

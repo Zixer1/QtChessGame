@@ -4,6 +4,8 @@
 
 void testPosition() {
     // Create a Position object with no parameters
+    using namespace data_model;
+
     Position pos1 = Position();
     qDebug() << "Position with no parameters: (" << pos1.getX() << ", " << pos1.getY() << ")";
 

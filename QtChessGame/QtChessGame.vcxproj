@@ -97,6 +97,8 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="Bishop.cpp" />
+    <ClCompile Include="Scene.cpp" />
+    <ClCompile Include="Scene.h" />
     <ClCompile Include="EndWindow.cpp" />
     <ClCompile Include="King.cpp" />
     <ClCompile Include="Knight.cpp" />
@@ -105,9 +107,8 @@
     <ClCompile Include="position_tester.cpp" />
     <ClCompile Include="Queen.cpp" />
     <ClCompile Include="Rook.cpp" />
-    <ClCompile Include="square.cpp" />
+    <ClCompile Include="Square.cpp" />
     <ClCompile Include="StartWindow.cpp" />
-    <ClCompile Include="Test.cpp" />
     <QtRcc Include="QtChessGame.qrc" />
     <QtUic Include="QtChessGame.ui" />
     <QtMoc Include="QtChessGame.h" />
@@ -130,7 +131,7 @@
     <ClInclude Include="PlayingWindow.h" />
     <ClInclude Include="Queen.h" />
     <ClInclude Include="Rook.h" />
-    <QtMoc Include="square.h" />
+    <QtMoc Include="Square.h" />
     <ClInclude Include="StartWindow.h" />
   </ItemGroup>
   <ItemGroup>

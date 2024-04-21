@@ -10,9 +10,11 @@
 
     class PlayingWindow : public QGraphicsView {
     public:
+        QGraphicsScene* scene;
+
         PlayingWindow(QWidget* parent = 0);
 
-        QGraphicsScene* scene;
+        
 
     };
 

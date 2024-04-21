@@ -5,10 +5,24 @@
 
 #include "Piece.h"
 #include <QGraphicsView>
-
+#include <array>
+#include "Position.h"
+#include "Square.h"
 class ChessBoard : public QGraphicsView {
+private:
+    static int squareCount; // Static member to keep track of Square objects
+    static std::array<Square, 64> existingSquarePositions; // Static member to hold existing positions
+    QGraphicsScene scene;
+
 public:
-    ChessBoard(int size, QWidget* parent = nullptr);
+    ChessBoard(QWidget* parent = nullptr);
+
+    ~ChessBoard();
+
+    // Methods
+
+    
+
 };
 
 #endif /* CHESSBOARD_H */

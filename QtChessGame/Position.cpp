@@ -4,6 +4,9 @@
 #include <iostream>
 #include <QDebug>
 
+// Namespace is global to Postion.cpp only for defining the Position class methods
+using namespace data_model;
+
 Position::Position() : x(0), y(0) {}
 
 Position::Position(int x, int y) {
@@ -58,4 +61,9 @@ bool Position::isSecondToLastRow() const {
 
 bool Position::isBeyondLimits(int add_X, int add_Y) {
 	return x + add_X < 1 || x + add_X > 8 || y + add_Y < 1 || y + add_Y > 8;
+}
+
+void Position::movePosition(int x, int y) {
+	Position::x = x;
+	Position::y = y;
 }
