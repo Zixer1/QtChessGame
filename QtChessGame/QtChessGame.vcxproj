@@ -107,6 +107,7 @@
     <ClCompile Include="Queen.cpp" />
     <ClCompile Include="Rook.cpp" />
     <ClCompile Include="Square.cpp" />
+    <ClCompile Include="TempMove.cpp" />
     <QtRcc Include="QtChessGame.qrc" />
     <QtUic Include="QtChessGame.ui" />
     <ClCompile Include="ChessBoard.cpp" />
@@ -125,6 +126,7 @@
     <ClInclude Include="Position.h" />
     <ClInclude Include="Queen.h" />
     <ClInclude Include="Rook.h" />
+    <ClInclude Include="TempMove.h" />
     <QtMoc Include="Square.h" />
   </ItemGroup>
   <ItemGroup>

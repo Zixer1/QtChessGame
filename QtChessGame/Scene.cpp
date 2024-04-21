@@ -1,4 +1,3 @@
-#include "Scene.h"
 #include <QGraphicsScene>
 #include <QGraphicsView>
 #include <QWidget>
@@ -7,6 +6,8 @@
 #include <QGraphicsTextItem>
 #include <QFont>
 #include <QImage>
+
+#include "Scene.h"
 
 // Namespace is global to Scene.cpp only for defining the Position class methods
 
@@ -260,7 +261,7 @@ void gui::Scene::displayChessPiece(Square squareToPlace) {
 		piecePath = basePath + "white_pieces/white-queen.png";
 		break;
 	case PieceType::WhiteKing:
-		qDebug() << "White King";
+		qDebug() << "Attempt to spawn White King";
 		incrementWhiteKingCounter();
 		underPieceLimit = allowedToPlaceKing(PieceType::WhiteKing);
 		piecePath = basePath + "white_pieces/white-king.png";
@@ -286,7 +287,7 @@ void gui::Scene::displayChessPiece(Square squareToPlace) {
 		piecePath = basePath + "black_pieces/black-queen.png";
 		break;
 	case PieceType::BlackKing:
-		qDebug() << "Black King";
+		qDebug() << "Attempt to spawn Black King";
 		incrementBlackKingCounter();
 		underPieceLimit = allowedToPlaceKing(PieceType::BlackKing);
 		piecePath = basePath + "black_pieces/black-king.png";

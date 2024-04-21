@@ -3,11 +3,15 @@
 #ifndef CHESSBOARD_H
 #define CHESSBOARD_H
 
-#include "Piece.h"
+
 #include <QGraphicsView>
 #include <array>
+
 #include "Position.h"
 #include "Square.h"
+#include "Piece.h"
+
+
 class ChessBoard : public QGraphicsView {
 private:
     // Use the info from the squares, to create a grid of pieces and be able to check things like the Pos of the king and later check for allowed moves

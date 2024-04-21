@@ -11,16 +11,18 @@ Date   15 April 2024
 #include <QGraphicsView>
 #include <QApplication>
 #include <QPixmap> // Include QPixmap header for handling images
-#include "Scene.h"
 #include <QDebug>
 #include <array>
+#include <QTimer>
+
+#include "Scene.h"
 #include "Square.h"
 #include "Position.h"
 #include "Piece.h"
 #include "PieceType.h"
-#include <QTimer>
+#include "TempMove.h"
 
-int main(int argc, char *argv[])
+int main(int argc, char* argv[])
 {
     QApplication a(argc, argv);
 
@@ -50,6 +52,29 @@ int main(int argc, char *argv[])
         Edit the Piece(PieceType::BlackPawn) to place the desired piece
         */
     }
+
+    //3. Test temporary position, only practical test, no display of the pieces moving yet:
+    Square test_square{ data_model::Position(4, 4), Piece(PieceType::WhiteKing) };
+    data_model::Position test_square_position = test_square.getPosition();
+    qDebug() << "Before moving the piece: " << test_square_position.getX() << ", " << test_square_position.getY();
+    try {
+        {
+            data_model::TempMove tempPos(test_square_position, 7, 7); // Temporarily moves to (7, 7)
+            qDebug() << "Position is now: " << test_square_position.getX() << ", " << test_square_position.getY();
+        } // Position automatically resets to (4, 4) here
+    }
+    catch (const std::out_of_range& e) {
+        qDebug() << e.what();
+    }
+    qDebug() << "After moving the piece: " << test_square_position.getX() << ", " << test_square_position.getY();
+
+
+
+
+    // There are obviously memory leaks since we have no current way to end the game so:
+    // TODO: Implement a way to end the game and delete the scene
+    // TODO: Fix the classes to be passed by reference instead of being copied
+    
 
     
     mainScene->show();

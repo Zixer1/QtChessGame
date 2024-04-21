@@ -1,10 +1,11 @@
 #ifndef SQUARE_H
 #define SQUARE_H
-
+#include <array>
 #include <QPushButton>
+
 #include "Position.h"
 #include "Piece.h"
-#include <array>
+
 
 class Square : public QPushButton {
     Q_OBJECT

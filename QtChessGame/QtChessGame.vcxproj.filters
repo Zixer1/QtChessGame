@@ -118,6 +118,9 @@
     <ClCompile Include="position_to_pixel_tester.cpp">
       <Filter>Source Files\tester_functions</Filter>
     </ClCompile>
+    <ClCompile Include="TempMove.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Bishop.h">
@@ -148,6 +151,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Position.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="TempMove.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
