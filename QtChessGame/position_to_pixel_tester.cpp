@@ -1,11 +1,9 @@
-#include "QtChessGame.h"
 #include <QtWidgets/QApplication>
 #include <QGraphicsScene>
 #include <QGraphicsRectItem>
 #include <QGraphicsView>
 #include <QApplication>
 #include <QPixmap> // Include QPixmap header for handling images
-#include "PlayingWindow.h"
 #include "Scene.h"
 #include <QDebug>
 #include <array>

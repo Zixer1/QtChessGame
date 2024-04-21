@@ -71,12 +71,6 @@
     <QtUic Include="QtChessGame.ui">
       <Filter>Form Files</Filter>
     </QtUic>
-    <QtMoc Include="QtChessGame.h">
-      <Filter>Header Files</Filter>
-    </QtMoc>
-    <ClCompile Include="QtChessGame.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -106,15 +100,6 @@
     <ClCompile Include="King.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="StartWindow.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="PlayingWindow.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="EndWindow.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="Position.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
@@ -141,9 +126,6 @@
     <ClInclude Include="ChessBoard.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="EndWindow.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="King.h">
       <Filter>Header Files</Filter>
     </ClInclude>
@@ -157,12 +139,6 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Rook.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="StartWindow.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="PlayingWindow.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="PieceType.h">

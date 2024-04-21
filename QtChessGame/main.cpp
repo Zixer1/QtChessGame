@@ -5,14 +5,12 @@ File   main.cpp
 Author Alexandre Sakr and Houssam Bousbia
 Date   15 April 2024
 */
-#include "QtChessGame.h"
 #include <QtWidgets/QApplication>
 #include <QGraphicsScene>
 #include <QGraphicsRectItem>
 #include <QGraphicsView>
 #include <QApplication>
 #include <QPixmap> // Include QPixmap header for handling images
-#include "PlayingWindow.h"
 #include "Scene.h"
 #include <QDebug>
 #include <array>
@@ -29,8 +27,9 @@ int main(int argc, char *argv[])
     // Since Scene is in the gui namespace, make sure to use it
     gui::Scene* mainScene;
 
+    //1. namespaces : data_model, gui
 
-
+    //2. No more than two kings at once showcase:
     // Assuming you want to start with the main menu scene, for example
     mainScene = new gui::Scene(2); // 0 could represent the main menu
     if (mainScene->gui::Scene::getCurrentScene() == 2) {
@@ -39,6 +38,7 @@ int main(int argc, char *argv[])
         mainScene->gui::Scene::displayChessLogo(400);
         mainScene->gui::Scene::displayChessPiece(Square(data_model::Position(1, 1), Piece(PieceType::BlackKing)));
         mainScene->gui::Scene::displayChessPiece(Square(data_model::Position(2, 2), Piece(PieceType::WhiteKing)));
+        // After 5 seconds, the two more kings will try to get added
         QTimer::singleShot(5000, mainScene, [mainScene]() {
             mainScene->displayChessPiece(Square(data_model::Position(3, 3), Piece(PieceType::BlackKing)));
             mainScene->displayChessPiece(Square(data_model::Position(4, 4), Piece(PieceType::WhiteKing)));
