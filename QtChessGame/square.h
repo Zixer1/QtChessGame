@@ -3,30 +3,41 @@
 
 #include <QPushButton>
 #include "Position.h"
-#include "PieceType.h"
-
-class ChessBoard; // Forward declaration
+#include "Piece.h"
+#include "ChessBoard.h"
+#include <array>
 
 class Square : public QPushButton {
     Q_OBJECT
 
 private:
     Position position;
-    PieceType pieceType;
+    Piece piece;
     ChessBoard* parentBoard; // Pointer to the parent ChessBoard
+    static int squareCount; // Static member to keep track of Square objects
+    static std::array<Position, 64> existingPositions; // Static member to hold existing positions
+    static int existingPositionsCount; // Static member to keep track of the number of existing positions
 
 public:
     Square(ChessBoard* parentBoard = nullptr, QWidget* parent = nullptr);
 
-    Square(Position pos, PieceType type, ChessBoard* parentBoard = nullptr, QWidget* parent = nullptr);
+    Square(Position pos, Piece type, ChessBoard* parentBoard = nullptr, QWidget* parent = nullptr);
+    
+    ~Square();
 
+    PieceType getPieceType() const {
+        return piece.getPieceType();
+    }
 
-    Position getPosition() const;
+    static std::array<Position, 64> getExistingPositions() {
+        return existingPositions;
+    }
 
-    void setPieceType(PieceType type);
+    
 
-    PieceType getPieceType() const;
-
+    static int getExistingPositionsCount() {
+        return existingPositionsCount;
+    }
 
 signals:
     // Add signals here if needed
@@ -34,5 +45,4 @@ signals:
 public slots:
     // Add slots here if needed
 };
-
 #endif /* SQUARE_H */

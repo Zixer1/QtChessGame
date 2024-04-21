@@ -3,10 +3,13 @@
 #ifndef STARTWINDOW_H
 #define STARTWINDOW_H
 
-class StartWindow {
-public:
-    StartWindow();
-    // Setup methods for new game initialization
-};
+namespace GUI {
+
+    class StartWindow {
+    public:
+        StartWindow();
+        // Setup methods for new game initialization
+    };
+}
 
 #endif // STARTWINDOW_H

@@ -7,12 +7,14 @@
 #include <QGraphicsView>
 #include <QGraphicsScene>
 
-class PlayingWindow : public QGraphicsView {
-public:
-    PlayingWindow(QWidget* parent = 0);
 
-    QGraphicsScene* scene;
+    class PlayingWindow : public QGraphicsView {
+    public:
+        PlayingWindow(QWidget* parent = 0);
 
-};
+        QGraphicsScene* scene;
+
+    };
+
 
 #endif // PLAYINGWINDOW_H

@@ -65,6 +65,12 @@
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x64'">
   </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <ClCompile>
+      <WarningLevel>Level4</WarningLevel>
+      <TreatWarningAsError>false</TreatWarningAsError>
+    </ClCompile>
+  </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x64'" Label="Configuration">
     <ClCompile>
       <TreatWChar_tAsBuiltInType>true</TreatWChar_tAsBuiltInType>
@@ -96,10 +102,12 @@
     <ClCompile Include="Knight.cpp" />
     <ClCompile Include="PlayingWindow.cpp" />
     <ClCompile Include="Position.cpp" />
+    <ClCompile Include="position_tester.cpp" />
     <ClCompile Include="Queen.cpp" />
     <ClCompile Include="Rook.cpp" />
     <ClCompile Include="square.cpp" />
     <ClCompile Include="StartWindow.cpp" />
+    <ClCompile Include="Test.cpp" />
     <QtRcc Include="QtChessGame.qrc" />
     <QtUic Include="QtChessGame.ui" />
     <QtMoc Include="QtChessGame.h" />

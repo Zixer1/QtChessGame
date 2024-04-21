@@ -1,26 +1,39 @@
-#pragma once
-// Position.h: Header file for the Position class, which represents a position on a chessboard using file and rank.
+// Position.h
 #ifndef POSITION_H
 #define POSITION_H
 
+#include <stdexcept>
+#include <array>
+
 class Position {
+private:
+	int x;
+	int y;
 public:
-    char x; // Represents the file on the chessboard, 'a' to 'h'.
-    int y;  // Represents the rank on the chessboard, 1 to 8.
+
 
     // constructors :
-    Position(); 
-    Position(char x, int y); 
+    Position();
+    Position(int x, int  y);
+    ~Position();
 
     // Overload operators
     bool operator==(const Position& other) const;
     bool operator!=(const Position& other) const;
-    bool operator<(const Position& other) const;
 
     //Methods
-    char getX() const;
+    int getX() const;
     int getY() const;
+    std::array<int, 2> getPosition() const;
 
+    // For Pawn promotion
+    bool isLastRow() const;
+
+    // For Pawns 2 steps move
+    bool isSecondToLastRow() const;
+
+    // For checking if the a new position is beyond the limits of the board
+    bool isBeyondLimits(int add_X, int add_y);
 };
 
 #endif // POSITION_H

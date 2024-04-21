@@ -8,6 +8,7 @@
 #include <QLabel>
 #include <iostream>
 #include <fstream>
+
 PlayingWindow::PlayingWindow(QWidget* parent) {
     // Chess board size in pixels, adjust here if needed
     int chessBoardSize{ 800 };
@@ -26,7 +27,7 @@ PlayingWindow::PlayingWindow(QWidget* parent) {
     setHorizontalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
     setVerticalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
 
-    // Setting up the chess board
+    // Setting up the chess board GUI
     QImage chessBoard;
     if (!chessBoard.load("C:/Users/Alex/source/repos/QtChessGame/QtChessGame/images/PlayingWindow_images/ChessBoards/chessboard1.png")) {
         qDebug() << "Failed to load chess board image.";

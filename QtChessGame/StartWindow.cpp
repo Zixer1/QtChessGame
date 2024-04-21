@@ -2,7 +2,7 @@
 // Would Have a Mute audio button, a Start button and an Exit button
 #include "StartWindow.h"
 
-StartWindow::StartWindow() {
+GUI::StartWindow::StartWindow() {
     // Constructor code here
 }
 
