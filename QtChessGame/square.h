@@ -12,7 +12,7 @@ class Square : public QPushButton {
 private:
     data_model::Position position;
     Piece piece;
-
+    bool isPlaced = false;
 public:
     Square(QWidget* parent = nullptr);
 
@@ -24,6 +24,21 @@ public:
         return piece.getPieceType();
     }
 
+    bool isPiecePlaced() const {
+		return isPlaced;
+	}
+    
+    data_model::Position getPosition() const {
+		return position;
+	}
+
+    void isPiecePlacedTrue() {
+        isPlaced = true;
+    }
+
+    void isPiecePlacedFalse() {
+        isPlaced = false;
+	}
 
 signals:
     // Add signals here if needed

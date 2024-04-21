@@ -4,7 +4,10 @@
 
 #include <QGraphicsView>
 #include <QWidget>
-
+#include "PieceType.h"
+#include "Square.h"
+#include "Position.h"
+#include <array>
 namespace gui {
     // Class Scene inherits from QGraphicsView to handle the visual representation.
     class Scene : public QGraphicsView {
@@ -15,6 +18,9 @@ namespace gui {
         int windowSizeY = chessBoardSize;
         int windowSizeAddX = 300;
         int windowSizeX = chessBoardSize + windowSizeAddX;
+        int chessPieceSize = chessBoardSize / 8;
+
+
 
     public:
         QGraphicsScene* scene;   // Scene for rendering graphical items
@@ -26,13 +32,23 @@ namespace gui {
         ~Scene();
 
         // Methods
+    
         int getCurrentScene();
         int getChessBoardSize();
+        void setChessBoardSize(int newChessBoardSize) {
+            chessBoardSize = newChessBoardSize;
+        }
+
         int getWindowSizeX();
+        // Returns the pixel position for a given chess position, as well as the size of the ChessPiece
+        std::array<int, 3> getPixelPositionFromChessPosition(data_model::Position position);
+
 
         void displayChessBoard(int newChessBoardSize = 800);
-
         void displayChessLogo(int chessLogoSize = 400);
+        void displayChessPiece(Square squareToPlacePiece);
+
+        
 
         void setSelfAsScene();
 

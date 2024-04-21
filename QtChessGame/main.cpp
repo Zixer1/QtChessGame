@@ -14,8 +14,12 @@ Date   15 April 2024
 #include <QPixmap> // Include QPixmap header for handling images
 #include "PlayingWindow.h"
 #include "Scene.h"
-PlayingWindow* playingWindow;
-
+#include <QDebug>
+#include <array>
+#include "Square.h"
+#include "Position.h"
+#include "Piece.h"
+#include "PieceType.h"
 int main(int argc, char *argv[])
 {
     QApplication a(argc, argv);
@@ -23,11 +27,19 @@ int main(int argc, char *argv[])
     // Since Scene is in the gui namespace, make sure to use it
     gui::Scene* mainScene;
 
-    // Assuming you want to start with the main menu scene, for example
-    mainScene = new gui::Scene(3); // 0 could represent the main menu
 
-	
+
+    // Assuming you want to start with the main menu scene, for example
+    mainScene = new gui::Scene(2); // 0 could represent the main menu
+    if (mainScene->gui::Scene::getCurrentScene() == 2) {
+        qDebug() << "Intitializing the Chess Board";
+        mainScene->gui::Scene::displayChessBoard(800);
+        mainScene->gui::Scene::displayChessLogo(400);
+    }
+
+    
     mainScene->show();
 
     return a.exec();
+
 }

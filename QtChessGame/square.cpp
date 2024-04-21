@@ -10,6 +10,8 @@ Square::Square(QWidget* parent) {
 }
 
 Square::Square(data_model::Position pos, Piece type, QWidget* parent) {
+    position = pos;
+    piece = type;
 
 }
 

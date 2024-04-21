@@ -97,6 +97,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="Bishop.cpp" />
+    <ClCompile Include="position_to_pixel_tester.cpp" />
     <ClCompile Include="Scene.cpp" />
     <ClCompile Include="Scene.h" />
     <ClCompile Include="EndWindow.cpp" />
