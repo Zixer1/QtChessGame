@@ -12,7 +12,7 @@ namespace gui {
     // Class Scene inherits from QGraphicsView to handle the visual representation.
     class Scene : public QGraphicsView {
     private:
-        
+
         int currentScene; //4 possible scenes: 0 not initialized, 1 start, 2 game, 3 end
         int chessBoardSize = 800;
         int windowSizeY = chessBoardSize;
@@ -20,7 +20,11 @@ namespace gui {
         int windowSizeX = chessBoardSize + windowSizeAddX;
         int chessPieceSize = chessBoardSize / 8;
 
-
+        // TODO move the piece counter to chessboard.h
+        int whiteKingCounter = 0;
+        int blackKingCounter = 0;
+        
+        
 
     public:
         QGraphicsScene* scene;   // Scene for rendering graphical items
@@ -32,7 +36,21 @@ namespace gui {
         ~Scene();
 
         // Methods
-    
+        
+        bool allowedToPlaceKing(PieceType pieceType) {
+            return whiteKingCounter < 2 && pieceType == PieceType::WhiteKing || blackKingCounter < 2 && pieceType == PieceType::BlackKing;
+        }
+
+        void incrementWhiteKingCounter() {
+  
+            ++whiteKingCounter;
+        }
+
+        void incrementBlackKingCounter() {
+          
+            ++blackKingCounter;
+        }
+
         int getCurrentScene();
         int getChessBoardSize();
         void setChessBoardSize(int newChessBoardSize) {
@@ -46,6 +64,11 @@ namespace gui {
 
         void displayChessBoard(int newChessBoardSize = 800);
         void displayChessLogo(int chessLogoSize = 400);
+        //Helper function to display a piece on the board
+        // Return or store QGraphicsPixmapItem somewhere from the helper function so that i later can hide the piece from the board as needed
+        void loadAndDisplayChessPiece(const QString& imagePath, const std::array<int, 3>& pixelSizes, bool underPieceLimit);
+
+        // Edit this in the future to take a Piece and a Sqare
         void displayChessPiece(Square squareToPlacePiece);
 
         

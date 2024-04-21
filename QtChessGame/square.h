@@ -11,7 +11,10 @@ class Square : public QPushButton {
 
 private:
     data_model::Position position;
+    // TODO Change this to PieceType to have a more segregated code
     Piece piece;
+
+    // TODO implement isPlaced into Scene.cpp displayChessPiece 
     bool isPlaced = false;
 public:
     Square(QWidget* parent = nullptr);

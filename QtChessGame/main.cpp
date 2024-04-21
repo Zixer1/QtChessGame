@@ -20,6 +20,8 @@ Date   15 April 2024
 #include "Position.h"
 #include "Piece.h"
 #include "PieceType.h"
+#include <QTimer>
+
 int main(int argc, char *argv[])
 {
     QApplication a(argc, argv);
@@ -35,11 +37,22 @@ int main(int argc, char *argv[])
         qDebug() << "Intitializing the Chess Board";
         mainScene->gui::Scene::displayChessBoard(800);
         mainScene->gui::Scene::displayChessLogo(400);
+        mainScene->gui::Scene::displayChessPiece(Square(data_model::Position(1, 1), Piece(PieceType::BlackKing)));
+        mainScene->gui::Scene::displayChessPiece(Square(data_model::Position(2, 2), Piece(PieceType::WhiteKing)));
+        QTimer::singleShot(5000, mainScene, [mainScene]() {
+            mainScene->displayChessPiece(Square(data_model::Position(3, 3), Piece(PieceType::BlackKing)));
+            mainScene->displayChessPiece(Square(data_model::Position(4, 4), Piece(PieceType::WhiteKing)));
+            });
+        /*
+        Test placing Pieces on the board:
+        mainScene->gui::Scene::displayChessPiece(Square(data_model::Position(1, 1), Piece(PieceType::BlackPawn)));
+        Edit the Position(1, 1) to place the piece at the desired position
+        Edit the Piece(PieceType::BlackPawn) to place the desired piece
+        */
     }
 
     
     mainScene->show();
 
     return a.exec();
-
 }

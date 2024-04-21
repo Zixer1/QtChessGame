@@ -10,7 +10,6 @@
 class Piece {
 protected:
     PieceType pieceType;
-    data_model::Position position;
     bool checksWhiteKing;
     bool checksBlackKing;
 public:
@@ -26,9 +25,7 @@ public:
         pieceType = type;
     }
 
-    data_model::Position getPosition() const {
-		return position;
-	}
+
 
 };
 

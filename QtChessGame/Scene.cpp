@@ -165,6 +165,7 @@ void gui::Scene::displayChessBoard(int newChessBoardSize) {
 	chessBoardSize = newChessBoardSize;
 	if (getCurrentScene() != 2) {
 		qDebug() << "Error: Scene is not set to the game scene.";
+		throw std::out_of_range("Invalid Scene");
 		return;
 	}
 	QImage chessBoard;
@@ -185,6 +186,7 @@ void gui::Scene::displayChessBoard(int newChessBoardSize) {
 void gui::Scene::displayChessLogo(int chessLogoSize) {
 	if (getCurrentScene() != 2) {
 		qDebug() << "Error: Scene is not set to the game scene.";
+		throw std::out_of_range("Invalid Scene");
 		return;
 	}
 	QImage chessLogo;
@@ -202,86 +204,102 @@ void gui::Scene::displayChessLogo(int chessLogoSize) {
 }
 
 // TODO: Implement the displayChessPiece method for each piece type and not just the King
+void gui::Scene::loadAndDisplayChessPiece(const QString &imagePath, const std::array<int, 3> &pixelSizes, bool underPieceLimit) {
+    QImage chessPiece;
+    if (!chessPiece.load(imagePath)) {
+        qDebug() << "Failed to load chess board image from " << imagePath;
+		throw std::invalid_argument("Failed to load image");
+        return;
+    }
+	else if(underPieceLimit) {
+		chessPiece = chessPiece.scaled(pixelSizes[2], pixelSizes[2], Qt::KeepAspectRatio);
+		QGraphicsPixmapItem* chessPieceItem = new QGraphicsPixmapItem(QPixmap::fromImage(chessPiece));
+		chessPieceItem->setPos(pixelSizes[0], pixelSizes[1]);
+		scene->addItem(chessPieceItem); // Adding the chess piece to the scene
+	}
+	else {
+		qDebug() << "Error: Too many of the same piece on the board";
+		throw std::out_of_range("Too many kings are being spawned");
+	}
+}
+
 
 void gui::Scene::displayChessPiece(Square squareToPlace) {
 	if (getCurrentScene() != 2) {
 		qDebug() << "Error: Scene is not set to the game scene.";
 		return;
 	}
-	QImage chessPiece;
+
 	std::array<int, 3> PixelSizes = getPixelPositionFromChessPosition(squareToPlace.getPosition());
+	QString basePath = "images/PlayingWindow_images/";
+	QString piecePath;
+	bool underPieceLimit{ true };
+
 	switch (squareToPlace.getPieceType()) {
-		case PieceType::Null: {
-			qDebug() << "No piece on this square";
-			break;
-		}
-		case PieceType::WhitePawn: {
-			qDebug() << "White Pawn";
-			break;
-		}
-		case PieceType::WhiteKnight: {
-			qDebug() << "White Knight" ;
-			break;
-		}
-		case PieceType::WhiteBishop: {
-			qDebug() << "White Bishop";
-			break;
-		}
-		case PieceType::WhiteRook: {
-			qDebug() << "White Rook";
-			break;
-		}
-		case PieceType::WhiteQueen: {
-			qDebug() << "White Queen";
-			break;
-		}
-		case PieceType::WhiteKing: {
-			qDebug() << "White King";
-			
-			if (!chessPiece.load("images/PlayingWindow_images/white_pieces/white-king.png")) {
-				qDebug() << "Failed to load chess board image.";
-			}
-			else {
-
-				chessPiece = chessPiece.scaled(PixelSizes[2], PixelSizes[2], Qt::KeepAspectRatio);
-
-				QGraphicsPixmapItem* chessLogoItem = new QGraphicsPixmapItem(QPixmap::fromImage(chessPiece));
-				chessLogoItem->setPos(PixelSizes[0], PixelSizes[1]);
-				scene->addItem(chessLogoItem); // Adding chess board as a child of the scene
-			}
-			break;
-		}
-		case PieceType::BlackPawn: {
-			qDebug() << "Black Pawn";
-			break;
-		}
-		case PieceType::BlackKnight: {
-			qDebug() << "Black Knight";
-			break;
-		}
-		case PieceType::BlackBishop: {
-			qDebug() << "Black Bishop";
-			break;
-		}
-		case PieceType::BlackRook: {
-			qDebug() << "Black Rook";
-			break;
-		}
-		case PieceType::BlackQueen: {
-			qDebug() << "Black Queen";
-			break;
-		}
-		case PieceType::BlackKing: {
-			qDebug() << "Black King";
-			break;
-		}
-		default: {
-			qDebug() << "Unknown piece";
-			break;
-		}
+	case PieceType::Null:
+		qDebug() << "No piece on this square";
+		break;
+	case PieceType::WhitePawn:
+		qDebug() << "White Pawn";
+		piecePath = basePath + "white_pieces/white-pawn.png";
+		break;
+	case PieceType::WhiteKnight:
+		qDebug() << "White Knight";
+		piecePath = basePath + "white_pieces/white-knight.png";
+		break;
+	case PieceType::WhiteBishop:
+		qDebug() << "White Bishop";
+		piecePath = basePath + "white_pieces/white-bishop.png";
+		break;
+	case PieceType::WhiteRook:
+		qDebug() << "White Rook";
+		piecePath = basePath + "white_pieces/white-rook.png";
+		break;
+	case PieceType::WhiteQueen:
+		qDebug() << "White Queen";
+		piecePath = basePath + "white_pieces/white-queen.png";
+		break;
+	case PieceType::WhiteKing:
+		qDebug() << "White King";
+		incrementWhiteKingCounter();
+		underPieceLimit = allowedToPlaceKing(PieceType::WhiteKing);
+		piecePath = basePath + "white_pieces/white-king.png";
+		break;
+	case PieceType::BlackPawn:
+		qDebug() << "Black Pawn";
+		piecePath = basePath + "black_pieces/black-pawn.png";
+		break;
+	case PieceType::BlackKnight:
+		qDebug() << "Black Knight";
+		piecePath = basePath + "black_pieces/black-knight.png";
+		break;
+	case PieceType::BlackBishop:
+		qDebug() << "Black Bishop";
+		piecePath = basePath + "black_pieces/black-bishop.png";
+		break;
+	case PieceType::BlackRook:
+		qDebug() << "Black Rook";
+		piecePath = basePath + "black_pieces/black-rook.png";
+		break;
+	case PieceType::BlackQueen:
+		qDebug() << "Black Queen";
+		piecePath = basePath + "black_pieces/black-queen.png";
+		break;
+	case PieceType::BlackKing:
+		qDebug() << "Black King";
+		incrementBlackKingCounter();
+		underPieceLimit = allowedToPlaceKing(PieceType::BlackKing);
+		piecePath = basePath + "black_pieces/black-king.png";
+		break;
+	default:
+		qDebug() << "Unknown piece type";
+		return;  // Exit the function if the piece type is unknown
 	}
-
+	if (!piecePath.isEmpty()) {
+		loadAndDisplayChessPiece(piecePath, PixelSizes, underPieceLimit);
+	}
 }
+
 
 void gui::Scene::setSelfAsScene() {
 		setScene(scene);
