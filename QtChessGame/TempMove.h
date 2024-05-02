@@ -17,8 +17,8 @@ namespace data_model {
         TempMove& operator=(const TempMove&) = delete;
 
     private:
-        Position& originalPosition;
-        int oldX, oldY;
+        Position& setPosition;
+        Position oldPosition;
     };
 
 }
