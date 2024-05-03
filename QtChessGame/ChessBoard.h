@@ -10,6 +10,8 @@
 
 #include "Position.h"
 #include "Piece.h"
+#include "Scene.h"
+
 
 // Forward declarations
 class Square;
@@ -20,12 +22,14 @@ private:
     // Use the info from the squares, to create a grid of pieces and be able to check things like the Pos of the king and later check for allowed moves
     int squareCount; // Static member to keep track of Square objects
     std::array<std::array<Square*, 8>, 8> existingSquares; // Static member to hold existing existing squares and what they contain
+    gui::Scene* mainScene; // Scene for rendering graphical items
     QGraphicsScene* scene; // Scene for rendering graphical items
+    
     std::array<void*, 2> clickedSquares;
     int clickedSquaresSize = 0;
 
 public:
-    ChessBoard(QGraphicsScene* scene = nullptr, QWidget* parent = nullptr);
+    ChessBoard(gui::Scene* mainScene = nullptr, QWidget* parent = nullptr);
 
     ~ChessBoard();
 

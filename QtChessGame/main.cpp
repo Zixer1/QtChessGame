@@ -41,7 +41,7 @@ int main(int argc, char* argv[])
         qDebug() << "Intitializing the Chess Board";
         mainScene->gui::Scene::displayChessBoard(800);
         mainScene->gui::Scene::displayChessLogo(400);
-        ChessBoard board{ mainScene->scene };
+        ChessBoard board{ mainScene};
 
 
         /*

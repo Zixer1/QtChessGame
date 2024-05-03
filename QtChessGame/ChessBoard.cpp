@@ -7,13 +7,14 @@
 #include "Square.h"
 
 
-ChessBoard::ChessBoard(QGraphicsScene* sceneOut, QWidget* parent) : QGraphicsView(parent) {
+ChessBoard::ChessBoard(gui::Scene* mainSceneOut, QWidget* parent) : QGraphicsView(parent) {
     squareCount = 0;
-    scene = sceneOut;
+    mainScene = mainSceneOut;
+    scene = mainSceneOut->scene;
     clickedSquares = {nullptr, nullptr};
     for (int x = 0; x < 8; ++x) {
         for (int y = 0; y < 8; ++y) {
-            Square* createSquare = new Square(data_model::Position(x + 1, y + 1), Piece(PieceType::Null), sceneOut);
+            Square* createSquare = new Square(data_model::Position(x + 1, y + 1), Piece(PieceType::Null), scene);
             createSquare->setChessBoardOwner(this);
             // Keep track of the square
             existingSquares[x][y] = createSquare; // Assign the pointer to existingSquares
