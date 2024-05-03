@@ -28,16 +28,15 @@ Square::~Square() {
 
 void Square::buttonClicked() {
     if (partOfBoard != nullptr) {
-        qDebug() << partOfBoard->getClickedSquaresSize();
+
         partOfBoard->addClickedSquare(this);
-
-
+        qDebug() << "Button clicked!" << piece.toString() << " at " << position.getX() << " " << position.getY();
+        button->setStyleSheet("background-color: transparent; border: 5px solid red;");
+        isClicked = true;
     }
     else {
         qDebug() << "partOfBoard pointer is null";
     }
 
-    qDebug() << "Button clicked!" << piece.toString() << " at " << position.getX() << " " << position.getY();
-    button->setStyleSheet("background-color: rgba(255, 0, 0, 128); border: 1px solid red;");
-    isClicked = true;
+    
 }

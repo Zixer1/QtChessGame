@@ -31,6 +31,10 @@ public:
     
     ~Square();
 
+    Piece* getPiece() {
+		return &piece;
+	}
+
     PieceType getPieceType() const {
         return piece.getPieceType();
     }
