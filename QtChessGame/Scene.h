@@ -23,7 +23,7 @@ namespace gui {
         // TODO move the piece counter to chessboard.h
         int whiteKingCounter = 0;
         int blackKingCounter = 0;
-        
+        std::map<QPair<int, int>, QGraphicsPixmapItem*> itemMap;
         
 
     public:
@@ -60,15 +60,15 @@ namespace gui {
         int getWindowSizeX();
         // Returns the pixel position for a given chess position, as well as the size of the ChessPiece
 
-
         void displayChessBoard(int newChessBoardSize = 800);
         void displayChessLogo(int chessLogoSize = 400);
         //Helper function to display a piece on the board
         // Return or store QGraphicsPixmapItem somewhere from the helper function so that i later can hide the piece from the board as needed
-        void loadAndDisplayChessPiece(const QString& imagePath, const std::array<int, 3>& pixelSizes, bool underPieceLimit);
+        QGraphicsPixmapItem* loadAndDisplayChessPiece(const QString& imagePath, const std::array<int, 3>& pixelSizes, bool underPieceLimit);
 
         // Edit this in the future to take a Piece and a Sqare
         void displayChessPiece(Square* squareToPlacePiece);
+        void hideChessPiece(Square* squareToRemove);
 
         
 

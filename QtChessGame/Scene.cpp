@@ -185,23 +185,26 @@ void gui::Scene::displayChessLogo(int chessLogoSize) {
 }
 
 // TODO: Implement the displayChessPiece method for each piece type and not just the King
-void gui::Scene::loadAndDisplayChessPiece(const QString &imagePath, const std::array<int, 3> &pixelSizes, bool underPieceLimit) {
+QGraphicsPixmapItem* gui::Scene::loadAndDisplayChessPiece(const QString &imagePath, const std::array<int, 3> &pixelSizes, bool underPieceLimit) {
     QImage chessPiece;
     if (!chessPiece.load(imagePath)) {
         qDebug() << "Failed to load chess board image from " << imagePath;
 		throw std::invalid_argument("Failed to load image");
-        return;
     }
 	else if(underPieceLimit) {
 		chessPiece = chessPiece.scaled(pixelSizes[2], pixelSizes[2], Qt::KeepAspectRatio);
 		QGraphicsPixmapItem* chessPieceItem = new QGraphicsPixmapItem(QPixmap::fromImage(chessPiece));
 		chessPieceItem->setPos(pixelSizes[0], pixelSizes[1]);
 		scene->addItem(chessPieceItem); // Adding the chess piece to the scene
+		return chessPieceItem;
 	}
 	else {
 		qDebug() << "Error: Too many of the same piece on the board";
 		throw std::out_of_range("Too many kings are being spawned");
 	}
+
+	
+
 }
 
 
@@ -277,10 +280,24 @@ void gui::Scene::displayChessPiece(Square* squareToPlace) {
 		return;  // Exit the function if the piece type is unknown
 	}
 	if (!piecePath.isEmpty()) {
-		loadAndDisplayChessPiece(piecePath, PixelSizes, underPieceLimit);
+		QGraphicsPixmapItem* item = loadAndDisplayChessPiece(piecePath, PixelSizes, underPieceLimit);
+		itemMap[{PixelSizes[0], PixelSizes[1]}] = item;
 	}
 }
 
+void gui::Scene::hideChessPiece(Square* squareToRemove) {
+	std::array<int, 3> PixelSizes = squareToRemove->getPosition().getPixelPositionFromChessPosition();
+	auto key = QPair<int, int>(PixelSizes[0], PixelSizes[1]);
+
+	if (itemMap.find(key) != itemMap.end()) {
+		scene->removeItem(itemMap[key]);  // Remove the item from the scene
+		delete itemMap[key];              // Delete the item to free memory
+		itemMap.erase(key);               // Remove the item from the map
+	}
+	else {
+		qDebug() << "No piece to remove at the specified position";
+	}
+}
 
 void gui::Scene::setSelfAsScene() {
 		setScene(scene);

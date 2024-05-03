@@ -25,6 +25,7 @@ private:
     gui::Scene* mainScene; // Scene for rendering graphical items
     QGraphicsScene* scene; // Scene for rendering graphical items
     
+    int playerTurn = 0; // 0 for white, 1 for black
     std::array<void*, 2> clickedSquares;
     int clickedSquaresSize = 0;
 
@@ -62,6 +63,10 @@ public:
             throw::std::runtime_error("Error: clickedSquares array is full or invalid.");
         }
     }
+
+    void switchPlayerTurn() {
+		playerTurn = (playerTurn == 0) ? 1 : 0;
+	}
 
     int getClickedSquaresSize() {
         return clickedSquaresSize;

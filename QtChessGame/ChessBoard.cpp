@@ -112,6 +112,14 @@ ChessBoard::ChessBoard(gui::Scene* mainSceneOut, QWidget* parent) : QGraphicsVie
                 squareCount += 1;
             }
             */
+            else {
+                Square* createSquare = new Square(data_model::Position(x + 1, y + 1), Piece(PieceType::Null), scene);
+                createSquare->setChessBoardOwner(this);
+                mainScene->gui::Scene::displayChessPiece(createSquare);
+                // Keep track of the square
+                existingSquares[x][y] = createSquare; // Assign the pointer to existingSquares
+                squareCount += 1;
+            }
         }   
     }
 }
