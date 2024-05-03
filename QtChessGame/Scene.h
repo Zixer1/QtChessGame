@@ -68,7 +68,7 @@ namespace gui {
         void loadAndDisplayChessPiece(const QString& imagePath, const std::array<int, 3>& pixelSizes, bool underPieceLimit);
 
         // Edit this in the future to take a Piece and a Sqare
-        void displayChessPiece(Square squareToPlacePiece);
+        void displayChessPiece(Square* squareToPlacePiece);
 
         
 

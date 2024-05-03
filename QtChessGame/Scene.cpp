@@ -205,18 +205,18 @@ void gui::Scene::loadAndDisplayChessPiece(const QString &imagePath, const std::a
 }
 
 
-void gui::Scene::displayChessPiece(Square squareToPlace) {
+void gui::Scene::displayChessPiece(Square* squareToPlace) {
 	if (getCurrentScene() != 2) {
 		qDebug() << "Error: Scene is not set to the game scene.";
 		return;
 	}
 
-	std::array<int, 3> PixelSizes = squareToPlace.getPosition().getPixelPositionFromChessPosition();
+	std::array<int, 3> PixelSizes = squareToPlace->getPosition().getPixelPositionFromChessPosition();
 	QString basePath = "images/PlayingWindow_images/";
 	QString piecePath;
 	bool underPieceLimit{ true };
 
-	switch (squareToPlace.getPieceType()) {
+	switch (squareToPlace->getPieceType()) {
 	case PieceType::Null:
 		qDebug() << "No piece on this square";
 		break;

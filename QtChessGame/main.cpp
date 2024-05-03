@@ -43,7 +43,6 @@ int main(int argc, char* argv[])
         mainScene->gui::Scene::displayChessLogo(400);
         ChessBoard board{ mainScene};
 
-
         /*
         Square square1{data_model::Position(1, 1), Piece(PieceType::Null), mainScene->scene};
         Square square2{data_model::Position(2, 2), Piece(PieceType::WhitePawn), mainScene->scene};
@@ -57,7 +56,7 @@ int main(int argc, char* argv[])
 
         /*
         Test placing Pieces on the board:
-        mainScene->gui::Scene::displayChessPiece(Square(data_model::Position(1, 1), Piece(PieceType::BlackPawn)));
+        
         Edit the Position(1, 1) to place the piece at the desired position
         Edit the Piece(PieceType::BlackPawn) to place the desired piece
         */
