@@ -22,6 +22,8 @@ private:
     int squareCount; // Static member to keep track of Square objects
     std::array<std::array<Square*, 8>, 8> existingSquares; // Static member to hold existing existing squares and what they contain
     QGraphicsScene* scene; // Scene for rendering graphical items
+    std::map<int, Square*> clickedSquares;
+
 public:
     ChessBoard(QGraphicsScene* scene = nullptr, QWidget* parent = nullptr);
 
@@ -36,6 +38,24 @@ public:
         return squareCount;
     }
 
+    void addClickedSquare(Square* square) {
+        if (static_cast<int>(clickedSquares.size()) + 1 > 2) {
+            throw::std::runtime_error("Only two squares can be clicked at a time");
+        }
+        clickedSquares[static_cast<int>(clickedSquares.size()) + 1] = square;
+    }
+
+    void resetClickedSquares() {
+        clickedSquares.clear();
+    }
+
+    int getClickedSquaresSize() {
+        return static_cast<int>(clickedSquares.size());
+    }
+
+    Square* getFirstClickedSquare() {
+        return clickedSquares[0];
+    }
 
     Square& getSquare(int x, int y) {
         return *existingSquares[x][y];

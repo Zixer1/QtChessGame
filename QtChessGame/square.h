@@ -9,6 +9,10 @@
 #include "Piece.h"
 #include "ChessBoard.h"
  
+
+// Forward declaration
+class ChessBoard;
+
 class Square : public QPushButton {
     Q_OBJECT
 
@@ -20,6 +24,7 @@ private:
     // TODO implement isPlaced into Scene.cpp displayChessPiece 
     bool isPlaced = false;
     bool isClicked = false;
+    ChessBoard* partOfBoard = nullptr;
 
 public:
 
@@ -51,6 +56,9 @@ public:
         isPlaced = false;
 	}
 
+    void setChessBoardOwner(ChessBoard* board) {
+		partOfBoard = board;
+	}
 
     Square& operator=(const Square& other) {
         if (this != &other) {
