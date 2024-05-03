@@ -4,12 +4,13 @@
 #include <QDebug>
 
 #include "ChessBoard.h"
+#include "Square.h"
 
 
 ChessBoard::ChessBoard(QGraphicsScene* sceneOut, QWidget* parent) : QGraphicsView(parent) {
     squareCount = 0;
     scene = sceneOut;
-
+    clickedSquares = {nullptr, nullptr};
     for (int x = 0; x < 8; ++x) {
         for (int y = 0; y < 8; ++y) {
             Square* createSquare = new Square(data_model::Position(x + 1, y + 1), Piece(PieceType::Null), sceneOut);

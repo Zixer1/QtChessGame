@@ -97,6 +97,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="Bishop.cpp" />
+    <ClCompile Include="ButtonTracker.cpp" />
     <ClCompile Include="position_to_pixel_tester.cpp" />
     <ClCompile Include="Scene.cpp" />
     <ClCompile Include="Scene.h" />
@@ -117,6 +118,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Bishop.h" />
+    <ClInclude Include="ButtonTracker.h" />
     <ClInclude Include="ChessBoard.h" />
     <ClInclude Include="King.h" />
     <ClInclude Include="Knight.h" />

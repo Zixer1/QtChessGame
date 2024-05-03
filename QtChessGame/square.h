@@ -7,7 +7,6 @@
 #include <QGraphicsProxyWidget>
 #include "Position.h"
 #include "Piece.h"
-#include "ChessBoard.h"
  
 
 // Forward declaration
@@ -75,13 +74,7 @@ signals:
     // Add signals here if needed
 
 private slots:
-    void buttonClicked() {
-         qDebug() << "Button clicked!" << piece.toString() << " at " << position.getX() << " " << position.getY();
-         button->setStyleSheet("background-color: rgba(255, 0, 0, 128); border: 1px solid red;");
-         isClicked = true;
-        
-
-    }
+    void buttonClicked();
 };
 
 #endif /* SQUARE_H */

@@ -25,3 +25,19 @@ Square::Square(data_model::Position pos, Piece type, QGraphicsScene* scene, QWid
 Square::~Square() {
 
 }
+
+void Square::buttonClicked() {
+    if (partOfBoard != nullptr) {
+        qDebug() << partOfBoard->getClickedSquaresSize();
+        partOfBoard->addClickedSquare(this);
+
+
+    }
+    else {
+        qDebug() << "partOfBoard pointer is null";
+    }
+
+    qDebug() << "Button clicked!" << piece.toString() << " at " << position.getX() << " " << position.getY();
+    button->setStyleSheet("background-color: rgba(255, 0, 0, 128); border: 1px solid red;");
+    isClicked = true;
+}

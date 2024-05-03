@@ -9,7 +9,6 @@
 #include <map>
 
 #include "Position.h"
-#include "Square.h"
 #include "Piece.h"
 
 // Forward declarations
@@ -22,7 +21,8 @@ private:
     int squareCount; // Static member to keep track of Square objects
     std::array<std::array<Square*, 8>, 8> existingSquares; // Static member to hold existing existing squares and what they contain
     QGraphicsScene* scene; // Scene for rendering graphical items
-    std::map<int, Square*> clickedSquares;
+    std::array<void*, 2> clickedSquares;
+    int clickedSquaresSize = 0;
 
 public:
     ChessBoard(QGraphicsScene* scene = nullptr, QWidget* parent = nullptr);
@@ -38,24 +38,38 @@ public:
         return squareCount;
     }
 
-    void addClickedSquare(Square* square) {
-        if (static_cast<int>(clickedSquares.size()) + 1 > 2) {
-            throw::std::runtime_error("Only two squares can be clicked at a time");
-        }
-        clickedSquares[static_cast<int>(clickedSquares.size()) + 1] = square;
-    }
 
     void resetClickedSquares() {
-        clickedSquares.clear();
+        clickedSquares[0] = nullptr;
+        clickedSquares[1] = nullptr;
+        clickedSquaresSize = 0;
+    }
+
+    void addClickedSquare(void* square) {
+        if (clickedSquares[0] == nullptr) {
+			clickedSquares[0] = square;
+            clickedSquaresSize += 1;
+		}
+		else if (clickedSquares[0] != nullptr && clickedSquares[1] == nullptr) {
+			clickedSquares[1] = square;
+            clickedSquaresSize += 1;
+		}
+        else {
+            throw::std::runtime_error("Error: clickedSquares array is full or invalid.");
+        }
     }
 
     int getClickedSquaresSize() {
-        return static_cast<int>(clickedSquares.size());
+        return clickedSquaresSize;
     }
 
-    Square* getFirstClickedSquare() {
+    void* getFirstClickedSquare() {
         return clickedSquares[0];
     }
+
+    void* getSecondClickedSquare() {
+		return clickedSquares[1];
+	}
 
     Square& getSquare(int x, int y) {
         return *existingSquares[x][y];
