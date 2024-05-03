@@ -5,7 +5,7 @@
 #include <stdexcept>
 #include <array>
 #include <QMainWindow>
-
+#include <string>
 
 
 namespace data_model {
@@ -32,6 +32,7 @@ public:
     int getX() const;
     int getY() const;
     std::array<int, 2> getPosition() const;
+
 
     // For Pawn promotion
     bool isLastRow() const;

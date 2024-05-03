@@ -14,6 +14,8 @@ Date   15 April 2024
 #include <QDebug>
 #include <array>
 #include <QTimer>
+#include <QGraphicsProxyWidget>
+
 
 #include "Scene.h"
 #include "Square.h"
@@ -21,6 +23,7 @@ Date   15 April 2024
 #include "Piece.h"
 #include "PieceType.h"
 #include "TempMove.h"
+#include "ChessBoard.h"
 
 int main(int argc, char* argv[])
 {
@@ -28,7 +31,7 @@ int main(int argc, char* argv[])
 
     // Since Scene is in the gui namespace, make sure to use it
     gui::Scene* mainScene;
-
+    
     //1. namespaces : data_model, gui
 
     //2. No more than two kings at once showcase:
@@ -38,6 +41,18 @@ int main(int argc, char* argv[])
         qDebug() << "Intitializing the Chess Board";
         mainScene->gui::Scene::displayChessBoard(800);
         mainScene->gui::Scene::displayChessLogo(400);
+        ChessBoard board{ mainScene->scene };
+
+
+        /*
+        Square square1{data_model::Position(1, 1), Piece(PieceType::Null), mainScene->scene};
+        Square square2{data_model::Position(2, 2), Piece(PieceType::WhitePawn), mainScene->scene};
+        */
+
+
+
+        // Create a QGraphicsView to display the scene
+        
 
 
         /*

@@ -13,8 +13,7 @@ data_model::Position::Position(int x, int y) {
         qDebug() << "Error: Tried to create a Position that is out of bound, you are trying to create a position ("<< x << "," << y << "), when it must be between 0 and 8 inclusive";
         throw std::out_of_range("Position must be between 0 and 8 inclusive");
         // In case the error is manually skipped, set the position to an invalid value
-        Position::x = 0;
-        Position::y = 0;
+
     }
     else {
         Position::x = x;
@@ -62,9 +61,9 @@ bool data_model::Position::isBeyondLimits(int add_X, int add_Y) {
 	return x + add_X < 1 || x + add_X > 8 || y + add_Y < 1 || y + add_Y > 8;
 }
 
-void data_model::Position::movePosition(int x, int y) {
-	Position::x = x;
-	Position::y = y;
+void data_model::Position::movePosition(int outX, int outY) {
+	x = outX;
+	y = outY;
 }
 
 std::array<int, 3> data_model::Position::getPixelPositionFromChessPosition(int sizeOfChessBoard) {
@@ -74,7 +73,6 @@ std::array<int, 3> data_model::Position::getPixelPositionFromChessPosition(int s
 	if (x == 0 || y == 0) {
 		qDebug() << "Error: Invalid chess position trying to get placed.";
 		throw std::out_of_range("Invalid chess position");
-		return { -10000,-10000 }; // returns a very high negative number in case of an error for it to display off screen
 	}
 
 	pixelPosition[0] = (x * (sizeOfChessBoard / 8)) - sizeOfChessBoard / 8;

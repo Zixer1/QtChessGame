@@ -2,11 +2,13 @@
 #define SQUARE_H
 #include <array>
 #include <QPushButton>
-
+#include <QGraphicsScene>
+#include <QGraphicsRectItem>
+#include <QGraphicsProxyWidget>
 #include "Position.h"
 #include "Piece.h"
-
-
+#include "ChessBoard.h"
+ 
 class Square : public QPushButton {
     Q_OBJECT
 
@@ -14,13 +16,14 @@ private:
     data_model::Position position;
     // TODO Change this to PieceType to have a more segregated code
     Piece piece;
-
+    QPushButton* button;
     // TODO implement isPlaced into Scene.cpp displayChessPiece 
     bool isPlaced = false;
-public:
-    Square(QWidget* parent = nullptr);
+    bool isClicked = false;
 
-    Square(data_model::Position pos, Piece type, QWidget* parent = nullptr);
+public:
+
+    Square(data_model::Position pos, Piece type, QGraphicsScene* scene = nullptr, QWidget* parent = nullptr);
     
     ~Square();
 
@@ -34,6 +37,10 @@ public:
     
     data_model::Position getPosition() const {
 		return position;
+	}
+
+    bool getIsClicked() const {
+		return isClicked;
 	}
 
     void isPiecePlacedTrue() {
@@ -59,7 +66,14 @@ public:
 signals:
     // Add signals here if needed
 
-public slots:
-    // Add slots here if needed
+private slots:
+    void buttonClicked() {
+         qDebug() << "Button clicked!" << piece.toString() << " at " << position.getX() << " " << position.getY();
+         button->setStyleSheet("background-color: rgba(255, 0, 0, 128); border: 1px solid red;");
+         isClicked = true;
+        
+
+    }
 };
+
 #endif /* SQUARE_H */
