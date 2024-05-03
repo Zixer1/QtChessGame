@@ -59,7 +59,6 @@ namespace gui {
 
         int getWindowSizeX();
         // Returns the pixel position for a given chess position, as well as the size of the ChessPiece
-        std::array<int, 3> getPixelPositionFromChessPosition(data_model::Position position);
 
 
         void displayChessBoard(int newChessBoardSize = 800);

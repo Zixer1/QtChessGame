@@ -66,3 +66,19 @@ void data_model::Position::movePosition(int x, int y) {
 	Position::x = x;
 	Position::y = y;
 }
+
+std::array<int, 3> data_model::Position::getPixelPositionFromChessPosition(int sizeOfChessBoard) {
+
+	// Convert chess position to pixel position
+	std::array<int, 3> pixelPosition = { 0, 0, 0 };
+	if (x == 0 || y == 0) {
+		qDebug() << "Error: Invalid chess position trying to get placed.";
+		throw std::out_of_range("Invalid chess position");
+		return { -10000,-10000 }; // returns a very high negative number in case of an error for it to display off screen
+	}
+
+	pixelPosition[0] = (x * (sizeOfChessBoard / 8)) - sizeOfChessBoard / 8;
+	pixelPosition[1] = (y * (sizeOfChessBoard / 8)) - sizeOfChessBoard / 8;
+	pixelPosition[2] = sizeOfChessBoard / 8;
+	return pixelPosition;
+}

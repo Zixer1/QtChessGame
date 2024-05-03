@@ -16,8 +16,8 @@ class ChessBoard : public QGraphicsView {
 private:
     // Use the info from the squares, to create a grid of pieces and be able to check things like the Pos of the king and later check for allowed moves
     static int squareCount; // Static member to keep track of Square objects
-    static std::array<Square, 64> existingSquarePositions; // Static member to hold existing existing squares and what they contain
-    QGraphicsScene scene;
+    static std::array<std::array<Square, 8>, 8> existingSquares; // Static member to hold existing existing squares and what they contain
+    QGraphicsScene scene; // Scene for rendering graphical items
 
 public:
     ChessBoard(QWidget* parent = nullptr);
@@ -25,6 +25,17 @@ public:
     ~ChessBoard();
 
     // Methods
+    void incrementSquareCount() {
+		squareCount += 1;
+	}
+
+    int getSquareCount() {
+        return squareCount;
+    }
+
+    Square& getSquare(int x, int y) {
+        return existingSquares[x][y];
+    }
 
     
 

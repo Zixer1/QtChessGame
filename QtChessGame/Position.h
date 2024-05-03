@@ -43,6 +43,8 @@ public:
     bool isBeyondLimits(int add_X, int add_y);
 
     void movePosition(int x, int y);
+	std::array<int, 3> getPixelPositionFromChessPosition(int sizeOfChessBoard = 800);
+
 };
 }
 #endif // POSITION_H

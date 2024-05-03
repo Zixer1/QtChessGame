@@ -139,27 +139,7 @@ int gui::Scene::getWindowSizeX() {
 		return windowSizeX;
 	}
 
-std::array<int, 3> gui::Scene::getPixelPositionFromChessPosition(data_model::Position position) {
-	if (getCurrentScene() != 2) {
-		qDebug() << "Error: Scene is not set to the game scene.";
-		throw std::out_of_range("Cannot get Pixel Position in a Screen that is not the Playing Screen");
-		return { -10000,-10000 }; // returns a very high negative number in case of an error for it to display off screen
-	}
 
-	// Convert chess position to pixel position
-	int sizeOfChessBoard = getChessBoardSize();
-	std::array<int, 3> pixelPosition = { 0, 0, 0 };
-	if (position.getX() == 0 || position.getY() == 0) {
-		qDebug() << "Error: Invalid chess position trying to get placed.";
-		throw std::out_of_range("Invalid chess position");
-		return { -10000,-10000 }; // returns a very high negative number in case of an error for it to display off screen
-	}
-
-	pixelPosition[0] = (position.getX() * (sizeOfChessBoard/8)) - sizeOfChessBoard/8;
-	pixelPosition[1] = (position.getY() * (sizeOfChessBoard/8)) - sizeOfChessBoard/8;
-	pixelPosition[2] = sizeOfChessBoard/8;
-	return pixelPosition;
-}
 
 
 void gui::Scene::displayChessBoard(int newChessBoardSize) {
@@ -231,7 +211,7 @@ void gui::Scene::displayChessPiece(Square squareToPlace) {
 		return;
 	}
 
-	std::array<int, 3> PixelSizes = getPixelPositionFromChessPosition(squareToPlace.getPosition());
+	std::array<int, 3> PixelSizes = squareToPlace.getPosition().getPixelPositionFromChessPosition();
 	QString basePath = "images/PlayingWindow_images/";
 	QString piecePath;
 	bool underPieceLimit{ true };

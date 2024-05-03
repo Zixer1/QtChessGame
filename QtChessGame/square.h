@@ -44,6 +44,18 @@ public:
         isPlaced = false;
 	}
 
+
+    Square& operator=(const Square& other) {
+        if (this != &other) {
+            // Perform member-wise assignment
+            // For example:
+            position = other.position;
+            piece = other.piece;
+            // Assign other members as needed
+        }
+        return *this;
+    }
+
 signals:
     // Add signals here if needed
 
