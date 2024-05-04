@@ -96,38 +96,26 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="Bishop.cpp" />
     <ClCompile Include="ButtonTracker.cpp" />
     <ClCompile Include="position_to_pixel_tester.cpp" />
     <ClCompile Include="Scene.cpp" />
     <ClCompile Include="Scene.h" />
-    <ClCompile Include="King.cpp" />
-    <ClCompile Include="Knight.cpp" />
     <ClCompile Include="Position.cpp" />
     <ClCompile Include="position_tester.cpp" />
-    <ClCompile Include="Queen.cpp" />
-    <ClCompile Include="Rook.cpp" />
     <ClCompile Include="Square.cpp" />
     <ClCompile Include="TempMove.cpp" />
     <QtRcc Include="QtChessGame.qrc" />
     <QtUic Include="QtChessGame.ui" />
     <ClCompile Include="ChessBoard.cpp" />
-    <ClCompile Include="Pawn.cpp" />
     <ClCompile Include="Piece.cpp" />
     <ClCompile Include="main.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Bishop.h" />
     <ClInclude Include="ButtonTracker.h" />
     <ClInclude Include="ChessBoard.h" />
-    <ClInclude Include="King.h" />
-    <ClInclude Include="Knight.h" />
-    <ClInclude Include="Pawn.h" />
     <ClInclude Include="Piece.h" />
     <ClInclude Include="PieceType.h" />
     <ClInclude Include="Position.h" />
-    <ClInclude Include="Queen.h" />
-    <ClInclude Include="Rook.h" />
     <ClInclude Include="TempMove.h" />
     <QtMoc Include="Square.h" />
   </ItemGroup>
