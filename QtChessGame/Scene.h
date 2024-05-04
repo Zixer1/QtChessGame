@@ -24,7 +24,8 @@ namespace gui {
         int whiteKingCounter = 0;
         int blackKingCounter = 0;
         std::map<QPair<int, int>, QGraphicsPixmapItem*> itemMap;
-        
+        std::map<QPair<int, int>, QGraphicsEllipseItem*> itemMapAllowedMoves;
+
 
     public:
         QGraphicsScene* scene;   // Scene for rendering graphical items
@@ -70,7 +71,8 @@ namespace gui {
         void displayChessPiece(Square* squareToPlacePiece);
         void hideChessPiece(Square* squareToRemove);
 
-        
+        void displayAllowedMoves(std::array<data_model::Position*, 64> allowedMoves);
+        void hideAllowedMoves();
 
         void setSelfAsScene();
 

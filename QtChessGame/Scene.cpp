@@ -298,6 +298,31 @@ void gui::Scene::hideChessPiece(Square* squareToRemove) {
 		qDebug() << "No piece to remove at the specified position";
 	}
 }
+void gui::Scene::displayAllowedMoves(std::array<data_model::Position*, 64> allowedMoves) {
+	for (auto position : allowedMoves) {
+		if (position != nullptr) {
+			std::array<int, 3> PixelSizes = position->getPixelPositionFromChessPosition();
+
+			QGraphicsEllipseItem* circle = new QGraphicsEllipseItem(PixelSizes[0]+38, PixelSizes[1]+38, PixelSizes[2] / 4, PixelSizes[2] / 4);
+			circle->setBrush(Qt::red);
+			circle->setPen(Qt::NoPen);
+			scene->addItem(circle);
+			itemMapAllowedMoves.insert({ QPair<int, int>(position->getX(), position->getY()), circle });
+		}
+	}
+}
+void gui::Scene::hideAllowedMoves() {
+	// Iterate over all entries in the itemMapAllowedMoves
+	for (auto it = itemMapAllowedMoves.begin(); it != itemMapAllowedMoves.end(); ++it) {
+		if (it->second != nullptr) {  // Check if the pointer to the circle is not null
+			scene->removeItem(it->second);  // Remove the item from the scene
+			delete it->second;  // Delete the circle to free the memory
+		}
+	}
+	itemMapAllowedMoves.clear();  // Clear the map after removing all items
+}
+
+
 
 void gui::Scene::setSelfAsScene() {
 		setScene(scene);

@@ -11,6 +11,7 @@
 #include "Position.h"
 #include "Piece.h"
 #include "Scene.h"
+#include <utility> // For std::pair
 
 
 // Forward declarations
@@ -50,6 +51,18 @@ public:
         clickedSquaresSize = 0;
     }
 
+    gui::Scene* getMainScene() {
+		return mainScene;
+	}
+
+    void addExistingSquare(Square* square) {
+        int x = square->getPosition().getX() - 1; // Convert 1-based index to 0-based.
+        int y = square->getPosition().getY() - 1;
+        existingSquares[x][y] = square;
+        qDebug() << "Added square to existingSquares array: " << x << ", " << y;
+    }
+
+
     void addClickedSquare(Square* square) {
         if (clickedSquares[0] == nullptr) {
 			clickedSquares[0] = square;
@@ -85,9 +98,15 @@ public:
 	}
 
     bool isOccupied(data_model::Position pos) {
-		return existingSquares[pos.getX()-1][pos.getX()-1] != nullptr;
+		return existingSquares[pos.getX()-1][pos.getX()-1]->getPieceType() != PieceType::Null;
 	}
+
+
     bool isOccupiedByOpponent(Square* square, Square* otherSquare) {
+        if (otherSquare == nullptr) {
+            qDebug() << "Target square is out of bounds.";
+            return false; // Assume out-of-bounds squares are not occupied.
+        }
         if (isOccupied(otherSquare->getPosition())) {
             if (square->getPiece()->getTypeValue() > 0) { // White piece
 
@@ -108,8 +127,13 @@ public:
 	}
 
     Square* getSquare(int x, int y) {
-        return existingSquares[x-1][y-1];
+        if (x < 1 || x > 8 || y < 1 || y > 8) {
+            qDebug() << "Attempted to access out-of-bounds square: " << x << ", " << y;
+            return nullptr; // Return nullptr or handle the error as appropriate
+        }
+        return existingSquares[x - 1][y - 1]; // Adjusted to 0-based indexing
     }
+
 
 
     bool isChecked() {}
@@ -129,44 +153,97 @@ public:
             throw std::invalid_argument("Square cannot be null.");
         }
 
-        data_model::Position currentPosition = square->getPosition();
         std::array<data_model::Position*, 64> validMoves{}; // Array to store up to 64 possible moves.
         size_t index = 0;
 
-        // Directions the Rook can move: right (+x), left (-x), up (+y), down (-y)
+        qDebug() << "Rook allowed moves for square: " << square->getPosition().getX() << ", " << square->getPosition().getY();
+
         std::array<int, 2> directions[] = { {1, 0}, {-1, 0}, {0, 1}, {0, -1} };
-
         for (auto& direction : directions) {
-            int step = 1; // Start with one step in the given direction.
+            int step = 1;
             while (true) {
-                int newX = currentPosition.getX() + direction[0] * step;
-                int newY = currentPosition.getY() + direction[1] * step;
+                int newX = square->getPosition().getX() + direction[0] * step;
+                int newY = square->getPosition().getY() + direction[1] * step;
+                qDebug() << "Checking new position: " << newX << ", " << newY;
 
-                // Check if the new position is within the board limits
-                if (newX < 0 || newX >= 8 || newY < 0 || newY >= 8) {
-                    break; // Break if the new position is out of the chessboard bounds.
+                if (newX < 1 || newX > 8 || newY < 1 || newY > 8) {
+                    qDebug() << "Position out of bounds, breaking loop.";
+                    break;
                 }
 
-                data_model::Position* newPos = new data_model::Position(newX, newY); // Create new position dynamically.
-
-                // Assuming a method exists to check if a position is occupied
-                if (isOccupiedByOpponent(square, getSquare(newX, newY))) {
-                    
-                    validMoves[index++] = newPos; 
-                    
-                    break; 
+                Square* targetSquare = getSquare(newX, newY);
+                if (!targetSquare) {
+                    qDebug() << "Failed to get square, breaking loop.";
+                    break;
                 }
 
-                validMoves[index++] = newPos; // Add valid position.
-                step++; // Move to the next step in the same direction.
+                if (index >= 64) {
+                    qDebug() << "Move storage full, breaking loop.";
+                    break; // Protect against overflow of validMoves
+                }
+
+                data_model::Position* newPos = new data_model::Position(newX, newY);
+                validMoves[index++] = newPos; // Safe to add as index is checked
+
+                if (isOccupiedByOpponent(square, targetSquare)) {
+                    break; // Stop exploring further in this direction after encountering an opponent
+                }
+
+                step++; // Increment step to explore further in the same direction
             }
         }
 
+        qDebug() << "Returning valid moves for rook:" << index;
         return validMoves;
     }
 
-    std::array<data_model::Position*, 64> knightAllowedMoves(Square* square) {
 
+
+
+
+    std::array<data_model::Position*, 64> knightAllowedMoves(Square* square) {
+        if (!square) {
+            throw std::invalid_argument("Square cannot be null.");
+        }
+
+        std::array<data_model::Position*, 64> validMoves{}; // Array to store up to 64 possible moves.
+        size_t index = 0;
+
+        int x = square->getPosition().getX();
+        int y = square->getPosition().getY();
+        qDebug() << "Knight allowed moves for square: " << x << ", " << y;
+
+        // All possible "L" shapes for a knight in chess
+        std::array<std::pair<int, int>, 8> moves = { {
+            {2, 1}, {1, 2}, {-1, 2}, {-2, 1},
+            {-2, -1}, {-1, -2}, {1, -2}, {2, -1}
+        } };
+
+        for (auto& move : moves) {
+            int newX = x + move.first;
+            int newY = y + move.second;
+            qDebug() << "Checking new position: " << newX << ", " << newY;
+
+            if (newX < 1 || newX > 8 || newY < 1 || newY > 8) {
+                qDebug() << "Position out of bounds, skipping position.";
+                continue;
+            }
+
+            qDebug() << "Getting square for position: " << newX << ", " << newY;
+            Square* targetSquare = getSquare(newX, newY);
+            qDebug() << targetSquare;
+            qDebug() << "Checking if square is occupied or occupied by opponent." << targetSquare->getPosition().getX () << ", " << targetSquare->getPosition().getY();
+            if (!isOccupied(targetSquare->getPosition()) || isOccupiedByOpponent(square, targetSquare)) {
+                qDebug() << "Creating new position object.";
+                data_model::Position* newPos = new data_model::Position(newX, newY);
+                qDebug() << "Created new position object.";
+                validMoves[index++] = newPos; // Add position if not occupied or occupied by opponent
+                qDebug() << "Added new position object to validMoves array.";
+            }
+        }
+
+        qDebug() << "Returning valid moves for knight:" << index;
+        return validMoves;
     }
     std::array<data_model::Position*, 64> bishopAllowedMoves(Square* square) {
         //TODO: Implement bishopAllowedMoves
@@ -222,6 +299,7 @@ public:
             return emptyArray;
         }
     }
+
 
 
 

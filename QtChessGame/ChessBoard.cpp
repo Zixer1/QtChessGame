@@ -18,48 +18,48 @@ ChessBoard::ChessBoard(gui::Scene* mainSceneOut, QWidget* parent) : QGraphicsVie
                 Square* createSquare = new Square(data_model::Position(x+1, y+1), Piece(PieceType::BlackRook), scene);
                 createSquare->setChessBoardOwner(this);
                 mainScene->gui::Scene::displayChessPiece(createSquare);
+                addExistingSquare(createSquare);
                 // Keep track of the square
-                existingSquares[x][y] = createSquare; // Assign the pointer to existingSquares
                 squareCount += 1;
             }
             if ((x == 0 && y == 7) || (x == 7 && y == 7)) {
                 Square* createSquare = new Square(data_model::Position(x + 1, y + 1), Piece(PieceType::WhiteRook), scene);
                 createSquare->setChessBoardOwner(this);
                 mainScene->gui::Scene::displayChessPiece(createSquare);
+                addExistingSquare(createSquare);
                 // Keep track of the square
-                existingSquares[x][y] = createSquare; // Assign the pointer to existingSquares
                 squareCount += 1;
             }
             if ((x == 1 && y == 0) || (x == 6 && y == 0)) {
 				Square* createSquare = new Square(data_model::Position(x + 1, y + 1), Piece(PieceType::BlackKnight), scene);
 				createSquare->setChessBoardOwner(this);
 				mainScene->gui::Scene::displayChessPiece(createSquare);
+                addExistingSquare(createSquare);
 				// Keep track of the square
-				existingSquares[x][y] = createSquare; // Assign the pointer to existingSquares
 				squareCount += 1;
 			}
             if ((x == 1 && y == 7) || (x == 6 && y == 7)) {
                 Square* createSquare = new Square(data_model::Position(x + 1, y + 1), Piece(PieceType::WhiteKnight), scene);
                 createSquare->setChessBoardOwner(this);
                 mainScene->gui::Scene::displayChessPiece(createSquare);
+                addExistingSquare(createSquare);
                 // Keep track of the square
-                existingSquares[x][y] = createSquare; // Assign the pointer to existingSquares
                 squareCount += 1;
             }
             if ((x == 4 && y == 0)) {
                 Square* createSquare = new Square(data_model::Position(x + 1, y + 1), Piece(PieceType::BlackKing), scene);
                 createSquare->setChessBoardOwner(this);
                 mainScene->gui::Scene::displayChessPiece(createSquare);
+                addExistingSquare(createSquare);
                 // Keep track of the square
-                existingSquares[x][y] = createSquare; // Assign the pointer to existingSquares
                 squareCount += 1;
             }
             if ((x == 4 && y == 7)) {
                 Square* createSquare = new Square(data_model::Position(x + 1, y + 1), Piece(PieceType::WhiteKing), scene);
                 createSquare->setChessBoardOwner(this);
                 mainScene->gui::Scene::displayChessPiece(createSquare);
+                addExistingSquare(createSquare);
                 // Keep track of the square
-                existingSquares[x][y] = createSquare; // Assign the pointer to existingSquares
                 squareCount += 1;
             }
             /*
@@ -67,6 +67,7 @@ ChessBoard::ChessBoard(gui::Scene* mainSceneOut, QWidget* parent) : QGraphicsVie
 				Square* createSquare = new Square(data_model::Position(x + 1, y + 1), Piece(PieceType::BlackBishop), scene);
 				createSquare->setChessBoardOwner(this);
 				mainScene->gui::Scene::displayChessPiece(createSquare);
+                addExistingSquare(createSquare);
 				// Keep track of the square
 				existingSquares[x][y] = createSquare; // Assign the pointer to existingSquares
 				squareCount += 1;
@@ -75,6 +76,7 @@ ChessBoard::ChessBoard(gui::Scene* mainSceneOut, QWidget* parent) : QGraphicsVie
 				Square* createSquare = new Square(data_model::Position(x + 1, y + 1), Piece(PieceType::WhiteBishop), scene);
 				createSquare->setChessBoardOwner(this);
 				mainScene->gui::Scene::displayChessPiece(createSquare);
+                addExistingSquare(createSquare);
 				// Keep track of the square
 				existingSquares[x][y] = createSquare; // Assign the pointer to existingSquares
 				squareCount += 1;
@@ -83,6 +85,7 @@ ChessBoard::ChessBoard(gui::Scene* mainSceneOut, QWidget* parent) : QGraphicsVie
 				Square* createSquare = new Square(data_model::Position(x + 1, y + 1), Piece(PieceType::BlackQueen), scene);
 				createSquare->setChessBoardOwner(this);
 				mainScene->gui::Scene::displayChessPiece(createSquare);
+                addExistingSquare(createSquare);
 				// Keep track of the square
 				existingSquares[x][y] = createSquare; // Assign the pointer to existingSquares
 				squareCount += 1;
@@ -91,6 +94,7 @@ ChessBoard::ChessBoard(gui::Scene* mainSceneOut, QWidget* parent) : QGraphicsVie
                 Square* createSquare = new Square(data_model::Position(x + 1, y + 1), Piece(PieceType::WhiteQueen), scene);
                 createSquare->setChessBoardOwner(this);
                 mainScene->gui::Scene::displayChessPiece(createSquare);
+                addExistingSquare(createSquare);
                 // Keep track of the square
                 existingSquares[x][y] = createSquare; // Assign the pointer to existingSquares
                 squareCount += 1;
@@ -99,6 +103,7 @@ ChessBoard::ChessBoard(gui::Scene* mainSceneOut, QWidget* parent) : QGraphicsVie
 				Square* createSquare = new Square(data_model::Position(x + 1, y + 1), Piece(PieceType::BlackPawn), scene);
 				createSquare->setChessBoardOwner(this);
 				mainScene->gui::Scene::displayChessPiece(createSquare);
+                addExistingSquare(createSquare);
 				// Keep track of the square
 				existingSquares[x][y] = createSquare; // Assign the pointer to existingSquares
 				squareCount += 1;
@@ -107,11 +112,19 @@ ChessBoard::ChessBoard(gui::Scene* mainSceneOut, QWidget* parent) : QGraphicsVie
                 Square* createSquare = new Square(data_model::Position(x + 1, y + 1), Piece(PieceType::WhitePawn), scene);
                 createSquare->setChessBoardOwner(this);
                 mainScene->gui::Scene::displayChessPiece(createSquare);
+                addExistingSquare(createSquare);
                 // Keep track of the square
                 existingSquares[x][y] = createSquare; // Assign the pointer to existingSquares
                 squareCount += 1;
             }
             */
+            else if (y>0 && y <7 || (x == 3 && y == 7) || (x == 3 && y == 0) || (x == 2 && y == 7) || (x == 5 && y == 7) || (x == 2 && y == 0) || (x == 5 && y == 0)){
+                Square* createSquare = new Square(data_model::Position(x + 1, y + 1), Piece(PieceType::Null), scene);
+				createSquare->setChessBoardOwner(this);
+				addExistingSquare(createSquare);
+				// Keep track of the square
+				squareCount += 1;
+			}
             
         }   
     }
