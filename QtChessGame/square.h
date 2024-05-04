@@ -24,7 +24,6 @@ private:
     bool isPlaced = false;
     bool isClicked = false;
     ChessBoard* partOfBoard = nullptr;
-
 public:
 
     Square(data_model::Position pos, Piece type, QGraphicsScene* scene = nullptr, QWidget* parent = nullptr);
@@ -39,6 +38,10 @@ public:
         return piece.getPieceType();
     }
 
+    QPushButton* getButton() {
+        return button;
+        }
+
     bool isPiecePlaced() const {
 		return isPlaced;
 	}
@@ -51,6 +54,20 @@ public:
 		return isClicked;
 	}
 
+    void switchStatesIsClicked() {
+        if (isClicked) {
+			isClicked = false;
+		} else {
+			isClicked = true;
+        
+        }
+    }
+    void setPiece(Piece* newPiece) {
+		piece = *newPiece;
+	}
+    void removePiece() {
+        piece = Piece();
+        }
     void isPiecePlacedTrue() {
         isPlaced = true;
     }

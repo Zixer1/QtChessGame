@@ -29,6 +29,8 @@ private:
     int playerTurn = 0; // 0 for white, 1 for black
     std::array<Square*, 2> clickedSquares;
     int clickedSquaresSize = 0;
+    std::array<data_model::Position*, 64> clickedAllowedMoves;
+
 
 public:
     ChessBoard(gui::Scene* mainScene = nullptr, QWidget* parent = nullptr);
@@ -54,6 +56,14 @@ public:
     gui::Scene* getMainScene() {
 		return mainScene;
 	}
+
+    void setClickedAllowedMoves(std::array<data_model::Position*, 64> allowedMoves) {
+		clickedAllowedMoves = allowedMoves;
+	}
+
+    std::array<data_model::Position*, 64> getClickedAllowedMoves() {
+        return clickedAllowedMoves;
+        }
 
     void addExistingSquare(Square* square) {
         int x = square->getPosition().getX() - 1; // Convert 1-based index to 0-based.
@@ -89,7 +99,7 @@ public:
         return clickedSquaresSize;
     }
 
-    void* getFirstClickedSquare() {
+    Square* getFirstClickedSquare() {
         return clickedSquares[0];
     }
 
@@ -152,50 +162,54 @@ public:
         if (!square) {
             throw std::invalid_argument("Square cannot be null.");
         }
-
+        qDebug() << square;
+        qDebug() << square->getPiece()->toString();
         std::array<data_model::Position*, 64> validMoves{}; // Array to store up to 64 possible moves.
         size_t index = 0;
 
-        qDebug() << "Rook allowed moves for square: " << square->getPosition().getX() << ", " << square->getPosition().getY();
-
+        // Directions the Rook can move: right (+x), left (-x), up (+y), down (-y)
         std::array<int, 2> directions[] = { {1, 0}, {-1, 0}, {0, 1}, {0, -1} };
+
         for (auto& direction : directions) {
-            int step = 1;
+            int step = 1; // Start with one step in the given direction.
             while (true) {
                 int newX = square->getPosition().getX() + direction[0] * step;
                 int newY = square->getPosition().getY() + direction[1] * step;
-                qDebug() << "Checking new position: " << newX << ", " << newY;
 
-                if (newX < 1 || newX > 8 || newY < 1 || newY > 8) {
-                    qDebug() << "Position out of bounds, breaking loop.";
-                    break;
+                // Check if the new position is within the board limits
+                if (newX < 0 || newX >= 8 || newY < 0 || newY >= 8) {
+                    break; // Break if the new position is out of the chessboard bounds.
                 }
 
-                Square* targetSquare = getSquare(newX, newY);
-                if (!targetSquare) {
-                    qDebug() << "Failed to get square, breaking loop.";
-                    break;
-                }
+                data_model::Position* newPos = new data_model::Position(newX, newY); // Create new position dynamically.
 
+                // Ensure we do not exceed the 64 move limit
                 if (index >= 64) {
-                    qDebug() << "Move storage full, breaking loop.";
-                    break; // Protect against overflow of validMoves
+                    delete newPos; // Delete the new position to avoid memory leak
+                    break; // Break the loop to prevent out-of-bounds access
                 }
 
-                data_model::Position* newPos = new data_model::Position(newX, newY);
-                validMoves[index++] = newPos; // Safe to add as index is checked
+                // Assuming a method exists to check if a position is occupied
+                if (isOccupiedByOpponent(square, getSquare(newX, newY))) {
 
-                if (isOccupiedByOpponent(square, targetSquare)) {
-                    break; // Stop exploring further in this direction after encountering an opponent
+                    validMoves[index++] = newPos;
+
+                    break;
                 }
 
-                step++; // Increment step to explore further in the same direction
+                validMoves[index++] = newPos; // Add valid position.
+                step++; // Move to the next step in the same direction.
+            }
+
+            // If we have reached the maximum number of moves we can store, exit the loop
+            if (index >= 64) {
+                break;
             }
         }
 
-        qDebug() << "Returning valid moves for rook:" << index;
         return validMoves;
     }
+
 
 
 

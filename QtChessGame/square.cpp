@@ -29,16 +29,53 @@ Square::~Square() {
 
 void Square::buttonClicked() {
     if (partOfBoard != nullptr) {
-        if (this->getPiece()->getTypeValue() == 2 || this->getPiece()->getTypeValue() == -2) { // Clicked on the rook
-            std::array<data_model::Position*, 64> allowedMovesTest = partOfBoard->knightAllowedMoves(this);
-            partOfBoard->getMainScene()->displayAllowedMoves(allowedMovesTest);
-        }
-        if (this->getPiece()->getTypeValue() == 5 || this->getPiece()->getTypeValue() == -5) { // Clicked on the rook
-            std::array<data_model::Position*, 64> allowedMovesTest = partOfBoard->knightAllowedMoves(this);
-            partOfBoard->getMainScene()->displayAllowedMoves(allowedMovesTest);
-        }
-        
-        
+        if (partOfBoard->getClickedSquaresSize() == 0) {
+            qDebug() << "Clicked squares size is 0";
+            if (this->getPiece()->getTypeValue() == 2 || this->getPiece()->getTypeValue() == -2) { // Clicked on the rook
+            partOfBoard->setClickedAllowedMoves(partOfBoard->knightAllowedMoves(this));
+            partOfBoard->getMainScene()->displayAllowedMoves(partOfBoard->getClickedAllowedMoves());
+            }
+            if (this->getPiece()->getTypeValue() == 5 || this->getPiece()->getTypeValue() == -5) { // Clicked on the rook
+                partOfBoard->setClickedAllowedMoves(partOfBoard->rookAllowedMoves(this));
+                partOfBoard->getMainScene()->displayAllowedMoves(partOfBoard->getClickedAllowedMoves());
+            }
+            }
+
+        else if (partOfBoard->getClickedSquaresSize() == 1) {
+            if (partOfBoard->isOccupiedByOpponent(partOfBoard->getFirstClickedSquare(), this)) { // Clicked on nothing
+                for (const auto& pos : partOfBoard->getClickedAllowedMoves()) {
+                    if (pos != nullptr && *pos == this->getPosition()) {
+                        partOfBoard->getFirstClickedSquare()->switchStatesIsClicked();
+                        partOfBoard->getFirstClickedSquare()->getButton()->setStyleSheet("background-color: transparent; border: transparent;");
+
+                        partOfBoard->getMainScene()->hideChessPiece(this);
+                        partOfBoard->getMainScene()->hideChessPiece(partOfBoard->getFirstClickedSquare());
+                        setPiece(partOfBoard->getFirstClickedSquare()->getPiece());
+                        partOfBoard->getFirstClickedSquare()->removePiece();
+                        partOfBoard->getMainScene()->displayChessPiece(this);
+                        button->setStyleSheet("background-color: transparent; border: transparent;");
+                        partOfBoard->getMainScene()->hideAllowedMoves();
+                        partOfBoard->resetClickedSquares();
+                        isClicked = false;
+                    }
+                }
+            
+                
+            }
+            else {
+                partOfBoard->getFirstClickedSquare()->switchStatesIsClicked();
+                partOfBoard->getFirstClickedSquare()->getButton()->setStyleSheet("background-color: transparent; border: transparent;");
+                button->setStyleSheet("background-color: transparent; border: transparent;");
+                partOfBoard->getMainScene()->hideAllowedMoves();
+                partOfBoard->resetClickedSquares();
+                isClicked = false;
+                
+                
+            }
+		}
+		else {
+			qDebug() << "Clicked squares size is not 0 or 1";
+		}
         
         partOfBoard->addClickedSquare(this);
         qDebug() << "Button clicked!" << piece.toString() << " at " << position.getX() << " " << position.getY();

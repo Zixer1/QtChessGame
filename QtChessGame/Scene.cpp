@@ -288,7 +288,9 @@ void gui::Scene::displayChessPiece(Square* squareToPlace) {
 void gui::Scene::hideChessPiece(Square* squareToRemove) {
 	std::array<int, 3> PixelSizes = squareToRemove->getPosition().getPixelPositionFromChessPosition();
 	auto key = QPair<int, int>(PixelSizes[0], PixelSizes[1]);
-
+	if (squareToRemove->getPieceType() == PieceType::Null) {
+		return;
+	}
 	if (itemMap.find(key) != itemMap.end()) {
 		scene->removeItem(itemMap[key]);  // Remove the item from the scene
 		delete itemMap[key];              // Delete the item to free memory
