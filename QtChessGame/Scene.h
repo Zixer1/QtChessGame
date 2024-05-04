@@ -57,7 +57,7 @@ namespace gui {
         void setChessBoardSize(int newChessBoardSize) {
             chessBoardSize = newChessBoardSize;
         }
-
+        void changeScene(int newScene);
         int getWindowSizeX();
         // Returns the pixel position for a given chess position, as well as the size of the ChessPiece
 

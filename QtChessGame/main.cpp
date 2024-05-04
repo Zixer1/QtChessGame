@@ -31,42 +31,35 @@ int main(int argc, char* argv[])
 
     // Since Scene is in the gui namespace, make sure to use it
     gui::Scene* mainScene;
-    
-    //1. namespaces : data_model, gui
+    mainScene = new gui::Scene(2);
 
-    //2. No more than two kings at once showcase:
-    // Assuming you want to start with the main menu scene, for example
-    mainScene = new gui::Scene(2); // 0 could represent the main menu
+    // J'ai mon Main Menu et mon Game Scene, mais je sais pas pourquoi, quand je change de scene, le ChessBoard s'affiche de maniere inhabituelle
     if (mainScene->gui::Scene::getCurrentScene() == 2) {
-        qDebug() << "Intitializing the Chess Board";
-        mainScene->gui::Scene::displayChessBoard(800);
-        mainScene->gui::Scene::displayChessLogo(400);
-        ChessBoard board{ mainScene};
-
-        /*
-        Square square1{data_model::Position(1, 1), Piece(PieceType::Null), mainScene->scene};
-        Square square2{data_model::Position(2, 2), Piece(PieceType::WhitePawn), mainScene->scene};
-        */
-
-
-
-        // Create a QGraphicsView to display the scene
-        
-
-
-        /*
-        Test placing Pieces on the board:
-        
-        Edit the Position(1, 1) to place the piece at the desired position
-        Edit the Piece(PieceType::BlackPawn) to place the desired piece
-        */
+        ChessBoard board{ mainScene };
     }
-
-    // There are obviously memory leaks since we have no current way to end the game so:
-    // TODO: Implement a way to end the game and delete the scene
-    // TODO: Fix the classes to be passed by reference instead of being copied
+    /*
+    Modèle :
+    Oui - Vous devez avoir un roi et deux autres pièces de types différents, par exemple tour et cavalier.
+    Oui - Votre programme devrait être conçu pour pouvoir facilement ajouter les autres types de pièces.
+    Oui avec petites erreurs- Les pièces doivent savoir quels mouvements sont valides, sans tenir compte de la mise en échec (dont la
+    vérification demande de regarder toutes les pièces du jeu et ce n’est donc peut-être pas à la pièce à faire cette
+    vérification), pour pouvoir faire un mouvement ou dire que le mouvement n’est pas valide.
+    La vérification s’il y a échec : si une pièce peut atteindre le roi adverse et ne pas permettre un mouvement qui
+    nous met nous-même en échec.
+    Moyen, oui mais avec des bugs a fixer - Des tests préliminaires pour vérifier qu’on peut bien bouger les pièces seulement pour des mouvements valides.
+    Interface graphique :
+    Oui - Affichage de l’échiquier (grille de 8×8 cases) dans une fenêtre pour y mettre les pièces, en utilisant la
+    bibliothèque Qt. Les pièces peuvent être des mots/lettres dans les cases.
+    Oui - On veut pouvoir indiquer avec le curseur de la souris quelle pièce déplacer à quel endroit et avoir une
+    rétroaction visuelle si le mouvement n’est pas permis.
     
-
+    Non par manque de temps, mais j'ai les methodes pour le faire dans Scene.h - Avoir une manière pour dire qu’on veut démarrer une nouvelle partie et choisir d’une liste une position de
+    départ (vous pouvez prendre des positions classiques ou mettre n’importe quoi).
+    Non - Les tests avec aucune ligne non couverte pour la partie modèle du jeu. Vous n’avez pas à automatiser les tests
+    de l’interface graphique (pas matière à ce cours).
+    Oui - Vous pouvez ajouter des images à vos pièces.
+    Presque, il faut integrer mon verificateur de tours (Tour du joueur blanc ou noir), ajouter la mise en echec, et fixer un peu de bugs - Avoir un jeu fonctionnel.
+    */
     
     mainScene->show();
 

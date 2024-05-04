@@ -8,19 +8,48 @@
 #include <QImage>
 
 #include "Scene.h"
-
+#include "ChessBoard.h"
 // Namespace is global to Scene.cpp only for defining the Position class methods
 
 
 gui::Scene::Scene() {
-		// Constructor code here
-		scene = new QGraphicsScene();
-		currentScene = 0;
-		// Main menu
-		
-		
+	// Constructor code here
+	scene = new QGraphicsScene();
+	currentScene = 0;
+	// TODO: Replace with actual main menu, and Buttons
+	setSceneRect(0, 0, windowSizeX, windowSizeY);
+	setHorizontalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
+	setVerticalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
+	setRenderHint(QPainter::Antialiasing);
+	setRenderHint(QPainter::TextAntialiasing);
+	setRenderHint(QPainter::SmoothPixmapTransform);
+	setCacheMode(QGraphicsView::CacheBackground);
+	setViewportUpdateMode(QGraphicsView::BoundingRectViewportUpdate);
+	setWindowTitle("Chess Game");
+	setFixedSize(windowSizeX, windowSizeY);
+	setStyleSheet("background-color: white;");
 
-	}
+	// Create and configure the text item
+	QGraphicsTextItem* textItem = new QGraphicsTextItem("Start Screen");
+	QFont font("Arial", 20, QFont::Bold);
+	textItem->setFont(font);
+	textItem->setDefaultTextColor(Qt::black);
+
+	// Calculate position to center the text in the scene
+	qreal x = windowSizeX / 2 - textItem->boundingRect().width() / 2;
+	qreal y = windowSizeY / 2 - textItem->boundingRect().height() / 2;
+	textItem->setPos(x, y);
+
+	// Add the text item to the scene
+	scene->addItem(textItem);
+
+
+
+	setScene(scene);
+	show();
+	currentScene = 1;
+}
+
 
 	// testing constructor
 gui::Scene::Scene(int sceneSelector, int testSceneSizeAddX, int testSceneSizeY)  {
@@ -70,15 +99,20 @@ gui::Scene::Scene(int sceneSelector, int testSceneSizeAddX, int testSceneSizeY) 
 		case 2: {
 
 
-
+			currentScene = 2;
 			scene->setSceneRect(0, 0, windowSizeX, windowSizeY);
 			setFixedSize(windowSizeX, windowSizeY);
 			setHorizontalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
 			setVerticalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
+			setRenderHint(QPainter::Antialiasing);
 
 			setScene(scene);
 			show();
-			currentScene = 2;
+			qDebug() << "Intitializing the Chess Board";
+			this->gui::Scene::displayChessBoard(800);
+			this->gui::Scene::displayChessLogo(400);
+			
+			qDebug() << "Second pointer: " << this;
 			break;
 		}
 		case 3: {
@@ -120,9 +154,109 @@ gui::Scene::Scene(int sceneSelector, int testSceneSizeAddX, int testSceneSizeY) 
 		}
 	}
 
+
+
 gui::Scene::~Scene() {
 		// Destructor code here
 		delete scene;
+	}
+
+void gui::Scene::changeScene(int sceneSelector) {
+	// Constructor code here
+// Game
+// Chess board size in pixels, adjust here if needed
+	scene = new QGraphicsScene();
+
+	switch (sceneSelector) {
+
+	case 1: {
+		// TODO: Replace with actual main menu, and Buttons
+		setSceneRect(0, 0, windowSizeX, windowSizeY);
+		setHorizontalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
+		setVerticalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
+		setRenderHint(QPainter::Antialiasing);
+		setRenderHint(QPainter::TextAntialiasing);
+		setRenderHint(QPainter::SmoothPixmapTransform);
+		setCacheMode(QGraphicsView::CacheBackground);
+		setViewportUpdateMode(QGraphicsView::BoundingRectViewportUpdate);
+		setWindowTitle("Chess Game");
+		setFixedSize(windowSizeX, windowSizeY);
+		setStyleSheet("background-color: white;");
+
+		// Create and configure the text item
+		QGraphicsTextItem* textItem = new QGraphicsTextItem("Start Screen");
+		QFont font("Arial", 20, QFont::Bold);
+		textItem->setFont(font);
+		textItem->setDefaultTextColor(Qt::black);
+
+		// Calculate position to center the text in the scene
+		qreal x = windowSizeX / 2 - textItem->boundingRect().width() / 2;
+		qreal y = windowSizeY / 2 - textItem->boundingRect().height() / 2;
+		textItem->setPos(x, y);
+
+		// Add the text item to the scene
+		scene->addItem(textItem);
+
+		setScene(scene);
+		show();
+		currentScene = 1;
+		break;
+	}
+	case 2: {
+
+
+		currentScene = 2;
+		scene->setSceneRect(0, 0, windowSizeX, windowSizeY);
+		setFixedSize(windowSizeX, windowSizeY);
+		setHorizontalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
+		setVerticalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
+		setRenderHint(QPainter::Antialiasing);
+
+		setScene(scene);
+		show();
+		qDebug() << "Intitializing the Chess Board";
+		this->gui::Scene::displayChessBoard(800);
+		this->gui::Scene::displayChessLogo(400);
+		qDebug() << "Second pointer: " << this;
+		break;
+	}
+	case 3: {
+		// TODO: Replace with actual end menu, and Buttons
+		setSceneRect(0, 0, windowSizeX, windowSizeY);
+		setHorizontalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
+		setVerticalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
+		setRenderHint(QPainter::Antialiasing);
+		setRenderHint(QPainter::TextAntialiasing);
+		setRenderHint(QPainter::SmoothPixmapTransform);
+		setCacheMode(QGraphicsView::CacheBackground);
+		setViewportUpdateMode(QGraphicsView::BoundingRectViewportUpdate);
+		setWindowTitle("Chess Game");
+		setFixedSize(windowSizeX, windowSizeY);
+		setStyleSheet("background-color: white;");
+
+		// Create and configure the text item
+		QGraphicsTextItem* textItem = new QGraphicsTextItem("End Screen");
+		QFont font("Arial", 20, QFont::Bold);
+		textItem->setFont(font);
+		textItem->setDefaultTextColor(Qt::red);
+
+		// Calculate position to center the text in the scene
+		qreal x = windowSizeX / 2 - textItem->boundingRect().width() / 2;
+		qreal y = windowSizeY / 2 - textItem->boundingRect().height() / 2;
+		textItem->setPos(x, y);
+
+		// Add the text item to the scene
+		scene->addItem(textItem);
+
+		setScene(scene);
+		show();
+		currentScene = 3;
+		break;
+	}
+	default:
+		// Default to main menu
+		break;
+	}
 	}
 
 int gui::Scene::getCurrentScene() {
@@ -191,16 +325,12 @@ QGraphicsPixmapItem* gui::Scene::loadAndDisplayChessPiece(const QString &imagePa
         qDebug() << "Failed to load chess board image from " << imagePath;
 		throw std::invalid_argument("Failed to load image");
     }
-	else if(underPieceLimit) {
+	else {
 		chessPiece = chessPiece.scaled(pixelSizes[2], pixelSizes[2], Qt::KeepAspectRatio);
 		QGraphicsPixmapItem* chessPieceItem = new QGraphicsPixmapItem(QPixmap::fromImage(chessPiece));
 		chessPieceItem->setPos(pixelSizes[0], pixelSizes[1]);
 		scene->addItem(chessPieceItem); // Adding the chess piece to the scene
 		return chessPieceItem;
-	}
-	else {
-		qDebug() << "Error: Too many of the same piece on the board";
-		throw std::out_of_range("Too many kings are being spawned");
 	}
 
 	

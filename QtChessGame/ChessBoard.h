@@ -91,6 +91,10 @@ public:
 		playerTurn = (playerTurn == 0) ? 1 : 0;
 	}
 
+    void setClickedSquaresSize(int size) {
+        clickedSquaresSize = size;
+        }
+
     int getPlayerTurn() {
 		return playerTurn;
 	}
@@ -145,18 +149,49 @@ public:
     }
 
 
+    std::array<data_model::Position*, 64> kingAllowedMoves(Square* square) {
+        if (!square) {
+            throw std::invalid_argument("Square cannot be null.");
+        }
+        qDebug() << square;
+        qDebug() << square->getPiece()->toString();
+        std::array<data_model::Position*, 64> validMoves{}; // Array to store up to 64 possible moves.
+        size_t index = 0;
 
-    bool isChecked() {}
+        // Directions the King can move: right, left, up, down, and all diagonals
+        std::array<std::pair<int, int>, 8> directions = {
+    {{1, 0}, {-1, 0}, {0, 1}, {0, -1},
+     {1, 1}, {-1, -1}, {1, -1}, {-1, 1}}
+        };
 
-    std::array<data_model::Position*, 64> blackAllowedMoves(Square* square) {
 
+        // Unlike the rook, the king only takes one step in any direction
+        for (const auto& direction : directions) {
+            int newX = square->getPosition().getX() + direction.first;
+            int newY = square->getPosition().getY() + direction.second;
+
+            // Check if the new position is within the board limits
+            if (newX >= 1 && newX <= 8 && newY >= 1 && newY <= 8) {
+                data_model::Position* newPos = new data_model::Position(newX, newY); // Create new position dynamically.
+
+                // Ensure we do not exceed the 64 move limit
+                if (index >= 64) {
+                    delete newPos; // Delete the new position to avoid memory leak
+                    break; // Break the loop to prevent out-of-bounds access
+                }
+
+                // Assuming a method exists to check if a position is occupied or occupied by an opponent
+                if (!isOccupiedByOpponent(square, getSquare(newX, newY))) {
+                    validMoves[index++] = newPos; // Add position if not occupied or occupied by opponent
+                }
+            }
+        }
+
+        qDebug() << "Returning valid moves for king:" << index;
+        return validMoves;
     }
-    std::array<data_model::Position*, 64> whiteAllowedMoves(Square* square) {
 
-    }
-    std::array<data_model::Position*, 64> kingAllowedMoves(Square* square){
 
-    }
 
     std::array<data_model::Position*, 64> rookAllowedMoves(Square* square) {
         if (!square) {
@@ -206,7 +241,7 @@ public:
                 break;
             }
         }
-
+        qDebug() << "Returning valid moves for rook:" << index;
         return validMoves;
     }
 
@@ -259,60 +294,7 @@ public:
         qDebug() << "Returning valid moves for knight:" << index;
         return validMoves;
     }
-    std::array<data_model::Position*, 64> bishopAllowedMoves(Square* square) {
-        //TODO: Implement bishopAllowedMoves
-    }
-    std::array<data_model::Position*, 64> queenAllowedMoves(Square* square) {
-        //TODO: Implement queenAllowedMoves
-    }
-    std::array<data_model::Position*, 64> pawnAllowedMoves(Square* square) {
-        //TODO: Implement pawnAllowedMoves
-    }
-    
-    std::array<std::array<Square*, 8>, 8> getAllowedMoves(Square* square) {
-        if (!square) {
-            throw std::invalid_argument("Square cannot be null.");
-        }
 
-        PieceType type = square->getPieceType();
-
-        // Predefined empty array with all elements set to nullptr
-        std::array<std::array<Square*, 8>, 8> emptyArray{};
-        for (auto& row : emptyArray) {
-            row.fill(nullptr);
-        }
-        
-        switch (type) {
-            /*
-        case PieceType::WhiteKing:
-        case PieceType::BlackKing:
-            return kingAllowedMoves(square);
-
-        case PieceType::WhiteQueen:
-        case PieceType::BlackQueen:
-            return queenAllowedMoves(square);
-
-        case PieceType::WhiteRook:
-        case PieceType::BlackRook:
-            return rookAllowedMoves(square);
-
-        case PieceType::WhiteBishop:
-        case PieceType::BlackBishop:
-            return bishopAllowedMoves(square);
-
-        case PieceType::WhiteKnight:
-        case PieceType::BlackKnight:
-            return knightAllowedMoves(square);
-
-        case PieceType::WhitePawn:
-        case PieceType::BlackPawn:
-            return pawnAllowedMoves(square);
-            */
-        default:
-            // Return the predefined empty array when the piece is null or type is unknown
-            return emptyArray;
-        }
-    }
 
 
 
