@@ -2,7 +2,7 @@
 
 ## Credits: Assets Used Under Fair Use
 
-This educational project operates under the provisions of Fair Use. Below is a detailed list of external assets that were used (anything not mentioned was made by myself with the help various online tools):
+This educational project operates under the provisions of Fair Use. Below is a detailed list of external assets that were used (anything not mentioned was made by myself with the help various online tools) - This project is not finished yet and is missing some features as well as documentation:
 
 - **Images**: All images, except for the logo and chess pieces, were sourced from [Chess.com](https://www.chess.com).
 - **In-Game Chess Sounds**: All in-game audio for chess movements was obtained from [Chess.com](https://www.chess.com).
